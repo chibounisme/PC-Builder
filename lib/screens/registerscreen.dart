@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:pcbuilder/screens/loginscreen.dart';
 import 'package:pcbuilder/services/auth.dart';
-import 'package:pcbuilder/utils/utils.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -189,7 +187,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     setState(() => creationErrorExists = true);
                     print('Problem when creating the user');
                   } else {
-                    moveToPage(context, LoginScreen(), 1);
+                    Navigator.pop(context, true);
                     print(user);
                   }
                 } else {
@@ -214,7 +212,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Container(
                 child: GestureDetector(
               onTap: () {
-                moveToPage(context, LoginScreen(), 1);
+                Navigator.pop(context, true);
               },
               child: Container(
                 decoration: BoxDecoration(

@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
             child: Text('Logout'),
             onPressed: () async {
               await _authService.logout();
-              moveToPage(context, LoginScreen(), 1);
+              moveToPage(context, LoginScreen());
             }),
       ),
     );

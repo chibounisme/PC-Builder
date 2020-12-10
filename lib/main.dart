@@ -87,7 +87,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         Container(
           child: GestureDetector(
             onTap: () {
-              moveToPage(context, LoginScreen(), 1);
+              moveToPage(context, LoginScreen());
             },
             child: Container(
               margin: EdgeInsets.all(32),

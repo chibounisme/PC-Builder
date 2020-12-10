@@ -153,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 "Wrong Email/Password Combination");
                             print('Problem with logging in');
                           } else {
-                            moveToPage(context, HomeScreen(), 1);
+                            moveToPage(context, HomeScreen());
                             print(user);
                           }
                         } else {
@@ -181,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
                 child: GestureDetector(
               onTap: () {
-                moveToPage(context, RegisterScreen(), 1);
+                moveToPage(context, RegisterScreen());
               },
               child: Container(
                 decoration: BoxDecoration(
