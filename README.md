@@ -1,6 +1,6 @@
-# flutter_app_hello_world
+# PC Builder
 
-A new Flutter application.
+This is a Flutter application dedicated for gamers to configure their own custom PCs.
 
 ## Getting Started
 
