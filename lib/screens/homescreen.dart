@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:pcbuilder/screens/loginscreen.dart';
 import 'package:pcbuilder/services/auth.dart';
-import 'package:pcbuilder/utils/utils.dart';
+// import 'package:pcbuilder/utils/utils.dart';
 
 class HomeScreen extends StatelessWidget {
   final AuthService _authService = AuthService();
@@ -16,7 +16,10 @@ class HomeScreen extends StatelessWidget {
             child: Text('Logout'),
             onPressed: () async {
               await _authService.logout();
-              moveToPage(context, LoginScreen());
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                  (Route<dynamic> route) => false);
+              // Navigator.pop(context, false);
             }),
       ),
     );
