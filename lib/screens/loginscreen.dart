@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pcbuilder/screens/pickgraph.dart';
-import 'package:pcbuilder/screens/pickgraphiccardscreen.dart';
 
 import 'package:pcbuilder/screens/registerscreen.dart';
-import 'package:pcbuilder/screens/homescreen.dart';
 import 'package:pcbuilder/services/auth.dart';
 import 'package:pcbuilder/utils/utils.dart';
 

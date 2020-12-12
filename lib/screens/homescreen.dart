@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:pcbuilder/models/equipment.dart';
 import 'package:pcbuilder/models/homegriditem.dart';
-import 'package:pcbuilder/services/firestore.dart';
 
 // Color Variables
 Color color_1 = Color(0xFFBC7C7C7);
