@@ -1,5 +1,5 @@
 class Equipment {
-  String imgUrl;
+  String img_url;
   double price;
   String name;
   String description;
@@ -7,7 +7,7 @@ class Equipment {
   String brand;
 
   Equipment(
-      {this.imgUrl,
+      {this.img_url,
       this.price,
       this.name,
       this.description,

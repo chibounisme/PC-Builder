@@ -16,7 +16,7 @@ class FireStoreService extends ChangeNotifier {
         name: element.data()['name'],
         description: element.data()['description'],
         type: element.data()['type'],
-        imgUrl: element.data()['img_url'],
+        img_url: element.data()['img_url'],
         price: element.data()['price'].toDouble(),
         brand: element.data()['brand'],
       ));
