@@ -19,22 +19,37 @@ class _PickGraphicCardScreenState extends State<PickGraphicCardScreen> {
     ),
     body: ListView.builder(
     itemCount:equipments.length,
-    itemBuilder: (context,index){
-    return ExpansionTile(
-    title: Text(equipments[index].name),
-    leading: Container(
-    width: MediaQuery.of(context).size.width *0.3,
-    child: Row(
-    children: <Widget>[
-    CircleAvatar(
-    backgroundImage: NetworkImage(equipments[index].img_url),
-    )
-    ],
+    itemBuilder: (context,index) {
+      return ExpansionTile(
+        title: Text(equipments[index].name),
+        leading: Container(
+          width: MediaQuery
+              .of(context)
+              .size
+              .width * 0.3,
+          child: Row(
+            children: <Widget>[
+              CircleAvatar(
+                backgroundImage: NetworkImage(equipments[index].img_url),
 
-    )),
+              ),
+              SizedBox(width: 15),
+
+            ],
+
+          ),
+        ),
+        children: <Widget>[
+          Image.network(
+            equipments[index].img_url, width: double.infinity, height: 150,
+            fit: BoxFit.cover,),
+          ListTile(
+            title: Text("Description"),
+          ),
+        ],
+      );
+    },
     ),
-
-    }
     );
   }
 }

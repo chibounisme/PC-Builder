@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:pcbuilder/screens/pickgraphiccardscreen.dart';
 
 import 'package:pcbuilder/screens/registerscreen.dart';
 import 'package:pcbuilder/screens/homescreen.dart';
@@ -159,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               setState(() => loginError =
                                   "Wrong Email/Password Combination");
                             } else {
-                              moveToPage(context, HomeScreen());
+                              moveToPage(context, PickGraphicCardScreen());
                             }
                           }
                         },
