@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pcbuilder/models/homegriditem.dart';
 import 'package:pcbuilder/services/firestorage.dart';
-
-// import 'package:pcbuilder/services/auth.dart';
 
 // Color Variables
 Color color_1 = Color(0xFFBC7C7C7);
@@ -15,22 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Future<Widget> _getImage(BuildContext context, String image) async {
-    Image m;
-    await FireStorageService.loadFromStorage(context, image)
-        .then((downloadUrl) {
-      print("Download URL is $downloadUrl");
-      m = Image.network(
-        downloadUrl.toString(),
-        fit: BoxFit.scaleDown,
-      );
-    }).catchError((e) {
-      print(e);
-    });
-
-    return m;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold)),
                           SizedBox(height: 4),
-                          Text('Check the hottest', // Gear = equipment
+                          Text(
+                              'Check the latest news about Graphics\n Cards, CPUs and more.',
                               style: TextStyle(
                                   color: Color(0xFFFFFFFFF),
                                   fontSize: 14,
@@ -67,10 +51,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       FutureBuilder(
-                          future: _getImage(context, "news_1.jpeg"),
+                          future: FireStorageService.getImage(
+                              context, "news_1.jpeg"),
                           builder: (context, snapshot) {
-                            print("come on");
-                            print(snapshot.data);
                             if (snapshot.connectionState ==
                                 ConnectionState.done)
                               return Container(
@@ -91,8 +74,27 @@ class _HomeScreenState extends State<HomeScreen> {
                           })
                     ],
                   ),
-                ))
+                )),
+            SizedBox(height: 30),
+            HomeScreenGrid(),
           ],
         ));
   }
 }
+
+class HomeScreenGrid extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+List<HomeGridItem> items = [
+  HomeGridItem(
+      title: 'Create new Setup',
+      subtitle:
+          'Unleash your creativity and create your wanted gaming configuration.'),
+  HomeGridItem(
+      title: 'View Setup',
+      subtitle: 'View, Modify and Delete your created setups.'),
+];

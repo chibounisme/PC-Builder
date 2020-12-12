@@ -152,21 +152,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           setState(() => loginError = "");
                           if (_formKey.currentState.validate()) {
                             setState(() => loading = true);
-                            print(email);
-                            print(password);
                             dynamic user =
                                 await _authService.login(email, password);
                             if (user == null) {
                               setState(() => loading = false);
                               setState(() => loginError =
                                   "Wrong Email/Password Combination");
-                              print('Problem with logging in');
                             } else {
                               moveToPage(context, HomeScreen());
-                              print(user);
                             }
-                          } else {
-                            print('Please type the correct information');
                           }
                         },
                         child: Container(
