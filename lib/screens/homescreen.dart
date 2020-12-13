@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pcbuilder/models/homegriditem.dart';
+import 'package:pcbuilder/screens/ProfileScreen.dart';
 import 'package:pcbuilder/screens/pickgraph.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
@@ -113,7 +114,7 @@ class HomeScreenGrid extends StatelessWidget {
             children: items.map((el) {
               return GestureDetector(
                 onTap: () {
-                  moveToPage(context, PickGraph());
+                  if (el.target != null) moveToPage(context, el.target);
                 },
                 child: Container(
                   padding: EdgeInsets.all(15),
@@ -159,17 +160,21 @@ List<HomeGridItem> items = [
   HomeGridItem(
       title: 'Create new Setup',
       icon: Icons.computer,
-      subtitle: 'Create your wanted gaming configuration.'),
+      subtitle: 'Create your wanted gaming configuration.',
+      target: PickGraph()),
   HomeGridItem(
       title: 'Profile',
       icon: Icons.person,
-      subtitle: 'View old configurations and Edit your Profile.'),
+      subtitle: 'View old configurations and Edit your Profile.',
+      target: ProfileScreen()),
   HomeGridItem(
       title: 'News',
       icon: Icons.new_releases,
-      subtitle: 'More news about the latest in computer gaming.'),
+      subtitle: 'More news about the latest in computer gaming.',
+      target: null),
   HomeGridItem(
       title: 'Settings',
       icon: Icons.settings,
-      subtitle: 'Change the application settings, or Logout.'),
+      subtitle: 'Change the application settings, or Logout.',
+      target: null),
 ];

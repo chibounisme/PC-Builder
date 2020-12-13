@@ -5,6 +5,7 @@ class HomeGridItem {
   String subtitle;
   String img;
   IconData icon;
+  Widget target;
 
-  HomeGridItem({this.title, this.subtitle, this.img, this.icon});
+  HomeGridItem({this.title, this.subtitle, this.img, this.icon, this.target});
 }
