@@ -3,20 +3,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pcbuilder/models/equipment.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:pcbuilder/screens/pickcpu.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
-class PickGraph extends StatefulWidget {
+class PickCpu extends StatefulWidget {
   @override
-  _PickGraphState createState() => _PickGraphState();
+  _PickCpuState createState() => _PickCpuState();
 }
 
-class _PickGraphState extends State<PickGraph> {
+class _PickCpuState extends State<PickCpu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pick a Graphic Card"),
+        title: Text("Pick a CPU"),
         backgroundColor: Colors.pink,
       ),
       backgroundColor: Colors.black,
@@ -36,7 +35,7 @@ class _ListPageState extends State<ListPage> {
     //print("hani hne");
     QuerySnapshot qn = await firestore
         .collection("equipments")
-        .where("type", isEqualTo: "graphics_card")
+        .where("type", isEqualTo: "cpu")
         .get();
     print(qn.docs);
     return qn.docs
@@ -65,7 +64,7 @@ class _ListPageState extends State<ListPage> {
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
-              child: SpinKitCubeGrid(
+              child: SpinKitPouringHourglass(
                 color: Colors.pink,
                 size: 50.0,
               ),
@@ -137,8 +136,8 @@ class _DetailPageState extends State<DetailPage> {
               child: GestureDetector(
                 onTap:() {
                   //sauvgarder element
-              moveToPage(context, PickCpu());
-              },
+                 // moveToPage(context, PickCpu());
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Color(0xFFBFE2851), width: 2),
