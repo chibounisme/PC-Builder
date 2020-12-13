@@ -18,7 +18,7 @@ class _PickCpuState extends State<PickCpu> {
         title: Text("Pick a CPU"),
         backgroundColor: Colors.pink,
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFF000000),
       body: ListPage(),
     );
   }

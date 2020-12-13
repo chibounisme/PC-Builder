@@ -19,7 +19,7 @@ class _PickGraphState extends State<PickGraph> {
         title: Text("Pick a Graphic Card"),
         backgroundColor: Colors.pink,
       ),
-      backgroundColor: Colors.black,
+      //backgroundColor: Colors.black,
       body: ListPage(),
     );
   }
