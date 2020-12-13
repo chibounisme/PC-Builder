@@ -122,41 +122,46 @@ class _DetailPageState extends State<DetailPage> {
         title: Text(widget.equipements.name),
         backgroundColor: Colors.pink,
       ),
-      body: Column(
-          children: <Widget>[
-            Image.network(widget.equipements.imgUrl),
-            ListTile(
-              title: Text(
-                  widget.equipements.price.toString() + "Dt"
-              ),
-              subtitle: Text(widget.equipements.description),
-            ),
-            SizedBox(height: 20,),
-            Container(
-              child: GestureDetector(
-                onTap:() {
-                  //sauvgarder element
-                 // moveToPage(context, PickCpu());
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFFBFE2851), width: 2),
-                      borderRadius: BorderRadius.circular(50)),
-                  padding:
-                  EdgeInsets.all(10),
-                  width: 120,
-                  child: Center(
-                    child: Text(
-                      "I Want It !",
-                      style: TextStyle(color: Color(0xFFBFE2851), fontSize: 16),
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(
+              children: <Widget>[
+                Image.network(widget.equipements.imgUrl),
+                ListTile(
+                  title: Text(
+                      widget.equipements.price.toString() + "Dt"
+                  ),
+                  subtitle: Text(widget.equipements.description),
+                ),
+                SizedBox(height: 20,),
+                Container(
+                  child: GestureDetector(
+                    onTap:() {
+                      //sauvgarder element
+                     // moveToPage(context, PickCpu());
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Color(0xFFBFE2851), width: 2),
+                          borderRadius: BorderRadius.circular(50)),
+                      padding:
+                      EdgeInsets.all(10),
+                      width: 120,
+                      child: Center(
+                        child: Text(
+                          "I Want It !",
+                          style: TextStyle(color: Color(0xFFBFE2851), fontSize: 16),
+                        ),
+                      ),
                     ),
                   ),
+
                 ),
-              ),
+                SizedBox(height: 20,)
 
-            )
-
-          ]
+              ]
+          ),
+        ),
       ),
     );
   }
