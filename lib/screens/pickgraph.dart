@@ -120,7 +120,7 @@ class _DetailPageState extends State<DetailPage> {
             subtitle: Text(widget.equipements.description),
           ),
 
-        ];
+        ]
       ),
     );
   }
