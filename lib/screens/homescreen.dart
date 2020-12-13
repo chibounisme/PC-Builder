@@ -8,7 +8,7 @@ import 'package:pcbuilder/utils/utils.dart';
 Color color_1 = Color(0xFFBC7C7C7);
 Color color_2 = Color(0xFFBB9B9B9);
 Color color_3 = Color(0xFFBFE2851);
-Color color_4 = Color(0xFF453658);
+Color color_4 = Color(0xFFF453658);
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -70,8 +70,31 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   )),
-              SizedBox(height: 30),
+              SizedBox(height: 100),
               HomeScreenGrid(),
+              Container(
+                  child: GestureDetector(
+                onTap: () {
+                  logout(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: Container(
+                    width: 100,
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                        color: color_3,
+                        // border: Border.all(color: Colors.white, width: 2),
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Center(
+                      child: Text(
+                        "Logout",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                    ),
+                  ),
+                ),
+              )),
             ],
           ),
         ));
