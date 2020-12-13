@@ -30,7 +30,7 @@ class _ListPageState extends State<ListPage> {
               name: element.data()['name'],
               description: element.data()['description'],
               type: element.data()['type'],
-              img_url: element.data()['img_url'],
+              imgUrl: element.data()['img_url'],
               price: element.data()['price'].toDouble(),
               brand: element.data()['brand'],
             ))
