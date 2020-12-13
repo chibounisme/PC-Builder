@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pcbuilder/models/equipment.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:pcbuilder/screens/pickcpu.dart';
+import 'package:pcbuilder/utils/utils.dart';
 
 class PickGraph extends StatefulWidget {
   @override
@@ -37,14 +40,15 @@ class _ListPageState extends State<ListPage> {
         .get();
     print(qn.docs);
     return qn.docs
-        .map((element) => Equipment(
-              name: element.data()['name'],
-              description: element.data()['description'],
-              type: element.data()['type'],
-              imgUrl: element.data()['img_url'],
-              price: element.data()['price'].toDouble(),
-              brand: element.data()['brand'],
-            ))
+        .map((element) =>
+        Equipment(
+          name: element.data()['name'],
+          description: element.data()['description'],
+          type: element.data()['type'],
+          imgUrl: element.data()['img_url'],
+          price: element.data()['price'].toDouble(),
+          brand: element.data()['brand'],
+        ))
         .toList();
   }
 
@@ -52,6 +56,7 @@ class _ListPageState extends State<ListPage> {
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => DetailPage(equipment)));
   }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -60,7 +65,10 @@ class _ListPageState extends State<ListPage> {
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
-              child: Text("loading..."),
+              child: SpinKitCubeGrid(
+                color: Colors.pink,
+                size: 50.0,
+              ),
             );
           } else if (snapshot.connectionState == ConnectionState.done) {
             return ListView.builder(
@@ -69,16 +77,19 @@ class _ListPageState extends State<ListPage> {
                   return ListTile(
                     title: Text(snapshot.data[index].name),
                     subtitle:
-                        Text((snapshot.data[index].price.toString()) + 'Dt'),
+                    Text((snapshot.data[index].price.toString()) + 'Dt'),
                     trailing: Icon(Icons.arrow_forward_sharp,
                         color: Colors.pink, size: 24.0),
                     leading: Container(
-                      width: MediaQuery.of(context).size.width * 0.19,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width * 0.19,
                       child: Row(
                         children: <Widget>[
                           CircleAvatar(
                             backgroundImage:
-                                NetworkImage(snapshot.data[index].imgUrl),
+                            NetworkImage(snapshot.data[index].imgUrl),
                           ),
                           SizedBox(width: 25),
                         ],
@@ -97,7 +108,9 @@ class _ListPageState extends State<ListPage> {
 
 class DetailPage extends StatefulWidget {
   final Equipment equipements;
+
   DetailPage(this.equipements);
+
   @override
   _DetailPageState createState() => _DetailPageState();
 }
@@ -111,16 +124,40 @@ class _DetailPageState extends State<DetailPage> {
         backgroundColor: Colors.pink,
       ),
       body: Column(
-        children : <Widget> [
-          Image.network(widget.equipements.imgUrl),
-          ListTile(
-            title: Text(
-             widget.equipements.price.toString()+"Dt"
+          children: <Widget>[
+            Image.network(widget.equipements.imgUrl),
+            ListTile(
+              title: Text(
+                  widget.equipements.price.toString() + "Dt"
+              ),
+              subtitle: Text(widget.equipements.description),
             ),
-            subtitle: Text(widget.equipements.description),
-          ),
+            SizedBox(height: 20,),
+            Container(
+              child: GestureDetector(
+                onTap:() {
+                  //sauvgarder element
+              moveToPage(context, PickCpu());
+              },
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFFBFE2851), width: 2),
+                      borderRadius: BorderRadius.circular(50)),
+                  padding:
+                  EdgeInsets.all(10),
+                  width: 120,
+                  child: Center(
+                    child: Text(
+                      "I Want It !",
+                      style: TextStyle(color: Color(0xFFBFE2851), fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
 
-        ]
+            )
+
+          ]
       ),
     );
   }
