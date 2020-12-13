@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pcbuilder/models/equipment.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:pcbuilder/screens/pickssd.dart';
 import 'package:pcbuilder/utils/utils.dart';
+
 
 class PickRam extends StatefulWidget {
   @override
@@ -138,7 +140,7 @@ class _DetailPageState extends State<DetailPage> {
                   child: GestureDetector(
                     onTap:() {
                       //sauvgarder element
-                     // moveToPage(context, PickRam());
+                      moveToPage(context, PickSsd());
                     },
                     child: Container(
                       decoration: BoxDecoration(
