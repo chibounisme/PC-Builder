@@ -40,15 +40,14 @@ class _ListPageState extends State<ListPage> {
         .get();
     print(qn.docs);
     return qn.docs
-        .map((element) =>
-        Equipment(
-          name: element.data()['name'],
-          description: element.data()['description'],
-          type: element.data()['type'],
-          imgUrl: element.data()['img_url'],
-          price: element.data()['price'].toDouble(),
-          brand: element.data()['brand'],
-        ))
+        .map((element) => Equipment(
+              name: element.data()['name'],
+              description: element.data()['description'],
+              type: element.data()['type'],
+              imgUrl: element.data()['img_url'],
+              price: element.data()['price'].toDouble(),
+              brand: element.data()['brand'],
+            ))
         .toList();
   }
 
@@ -77,19 +76,16 @@ class _ListPageState extends State<ListPage> {
                   return ListTile(
                     title: Text(snapshot.data[index].name),
                     subtitle:
-                    Text((snapshot.data[index].price.toString()) + 'Dt'),
+                        Text((snapshot.data[index].price.toString()) + 'Dt'),
                     trailing: Icon(Icons.arrow_forward_sharp,
                         color: Colors.pink, size: 24.0),
                     leading: Container(
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width * 0.19,
+                      width: MediaQuery.of(context).size.width * 0.19,
                       child: Row(
                         children: <Widget>[
                           CircleAvatar(
                             backgroundImage:
-                            NetworkImage(snapshot.data[index].imgUrl),
+                                NetworkImage(snapshot.data[index].imgUrl),
                           ),
                           SizedBox(width: 25),
                         ],
@@ -123,28 +119,28 @@ class _DetailPageState extends State<DetailPage> {
         title: Text(widget.equipements.name),
         backgroundColor: Colors.pink,
       ),
-      body: Column(
-          children: <Widget>[
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(children: <Widget>[
             Image.network(widget.equipements.imgUrl),
             ListTile(
-              title: Text(
-                  widget.equipements.price.toString() + "Dt"
-              ),
+              title: Text(widget.equipements.price.toString() + "Dt"),
               subtitle: Text(widget.equipements.description),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Container(
               child: GestureDetector(
-                onTap:() {
+                onTap: () {
                   //sauvgarder element
-              moveToPage(context, PickCpu());
-              },
+                  moveToPage(context, PickCpu());
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Color(0xFFBFE2851), width: 2),
                       borderRadius: BorderRadius.circular(50)),
-                  padding:
-                  EdgeInsets.all(10),
+                  padding: EdgeInsets.all(10),
                   width: 120,
                   child: Center(
                     child: Text(
@@ -154,10 +150,9 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
               ),
-
             )
-
-          ]
+          ]),
+        ),
       ),
     );
   }
