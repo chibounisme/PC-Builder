@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pcbuilder/models/equipment.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:pcbuilder/screens/pickmotherboard.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
 class PickCpu extends StatefulWidget {

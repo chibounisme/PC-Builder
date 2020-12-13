@@ -35,7 +35,7 @@ class _ListPageState extends State<ListPage> {
     //print("hani hne");
     QuerySnapshot qn = await firestore
         .collection("equipments")
-        .where("type", isEqualTo: "cpu")
+        .where("type", isEqualTo: "motherboard")
         .get();
     print(qn.docs);
     return qn.docs
