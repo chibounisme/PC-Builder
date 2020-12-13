@@ -70,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: Colors.grey,
                       ),
                     ),
-                    Container(height: 30),
+                    Container(height: 60),
                     RaisedButton(
                       color: Colors.pink,
                       onPressed: () {},
