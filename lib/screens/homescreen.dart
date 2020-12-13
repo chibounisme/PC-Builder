@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pcbuilder/models/homegriditem.dart';
+import 'package:pcbuilder/screens/pickgraph.dart';
+import 'package:pcbuilder/utils/utils.dart';
 
 // Color Variables
 Color color_1 = Color(0xFFBC7C7C7);
 Color color_2 = Color(0xFFBB9B9B9);
 Color color_3 = Color(0xFFBFE2851);
+Color color_4 = Color(0xFF453658);
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -17,9 +20,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.black,
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/background.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(height: 50),
               Padding(
@@ -71,16 +81,72 @@ class _HomeScreenState extends State<HomeScreen> {
 class HomeScreenGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Flexible(
+        child: GridView.count(
+            crossAxisCount: 2,
+            padding: EdgeInsets.only(left: 16, right: 16),
+            crossAxisSpacing: 18,
+            mainAxisSpacing: 18,
+            children: items.map((el) {
+              return GestureDetector(
+                onTap: () {
+                  moveToPage(context, PickGraph());
+                },
+                child: Container(
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                      color: color_4, borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        el.icon,
+                        size: 60,
+                        color: Colors.deepPurple[600],
+                      ),
+                      SizedBox(height: 14),
+                      Text(
+                        el.title,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 14),
+                      Text(
+                        el.subtitle,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }).toList()));
   }
 }
 
 List<HomeGridItem> items = [
   HomeGridItem(
       title: 'Create new Setup',
-      subtitle:
-          'Unleash your creativity and create your wanted gaming configuration.'),
+      icon: Icons.computer,
+      subtitle: 'Create your wanted gaming configuration.'),
   HomeGridItem(
-      title: 'View Setup',
-      subtitle: 'View, Modify and Delete your created setups.'),
+      title: 'Profile',
+      icon: Icons.person,
+      subtitle: 'View old configurations and Edit your Profile.'),
+  HomeGridItem(
+      title: 'News',
+      icon: Icons.new_releases,
+      subtitle: 'More news about the latest in computer gaming.'),
+  HomeGridItem(
+      title: 'Settings',
+      icon: Icons.settings,
+      subtitle: 'Change the application settings, or Logout.'),
 ];
