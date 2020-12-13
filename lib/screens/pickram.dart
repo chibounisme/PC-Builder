@@ -5,17 +5,17 @@ import 'package:pcbuilder/models/equipment.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
-class PickMotherBoard extends StatefulWidget {
+class PickRam extends StatefulWidget {
   @override
-  _PickMotherBoardState createState() => _PickMotherBoardState();
+  _PickRamState createState() => _PickRamState();
 }
 
-class _PickMotherBoardState extends State<PickMotherBoard> {
+class _PickRamState extends State<PickRam> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pick a MotherBoard"),
+        title: Text("Pick the RAM"),
         backgroundColor: Colors.pink,
       ),
       backgroundColor: Color(0xFF000000),
@@ -35,7 +35,7 @@ class _ListPageState extends State<ListPage> {
     //print("hani hne");
     QuerySnapshot qn = await firestore
         .collection("equipments")
-        .where("type", isEqualTo: "motherboard")
+        .where("type", isEqualTo: "ram")
         .get();
     print(qn.docs);
     return qn.docs
@@ -64,7 +64,7 @@ class _ListPageState extends State<ListPage> {
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
-              child: SpinKitFadingCube(
+              child: SpinKitWave(
                 color: Colors.pink,
                 size: 50.0,
               ),
@@ -138,7 +138,7 @@ class _DetailPageState extends State<DetailPage> {
                   child: GestureDetector(
                     onTap:() {
                       //sauvgarder element
-                      moveToPage(context, PickRam());
+                     // moveToPage(context, PickRam());
                     },
                     child: Container(
                       decoration: BoxDecoration(
