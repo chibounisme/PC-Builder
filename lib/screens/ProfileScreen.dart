@@ -75,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       color: Colors.pink,
                       onPressed: () {},
                       child: Text(
-                        'check your settings',
+                        'check your settings  ',
                         style: TextStyle(color: Colors.black),
                       ),
                     ),
