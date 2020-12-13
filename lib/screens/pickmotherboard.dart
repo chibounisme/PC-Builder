@@ -5,17 +5,17 @@ import 'package:pcbuilder/models/equipment.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
-class PickCpu extends StatefulWidget {
+class PickMotherBoard extends StatefulWidget {
   @override
-  _PickCpuState createState() => _PickCpuState();
+  _PickMotherBoardState createState() => _PickMotherBoardState();
 }
 
-class _PickCpuState extends State<PickCpu> {
+class _PickMotherBoardState extends State<PickMotherBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pick a CPU"),
+        title: Text("Pick a MotherBoard"),
         backgroundColor: Colors.pink,
       ),
       backgroundColor: Color(0xFF000000),
@@ -64,7 +64,7 @@ class _ListPageState extends State<ListPage> {
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
-              child: SpinKitPouringHourglass(
+              child: SpinKitFadingCube(
                 color: Colors.pink,
                 size: 50.0,
               ),
