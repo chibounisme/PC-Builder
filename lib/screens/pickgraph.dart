@@ -52,7 +52,6 @@ class _ListPageState extends State<ListPage> {
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => DetailPage(equipment)));
   }
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -111,13 +110,17 @@ class _DetailPageState extends State<DetailPage> {
         title: Text(widget.equipements.name),
         backgroundColor: Colors.pink,
       ),
-      body: Container(
-        child: Card(
-          child: ListTile(
-              //  title:,
-              //subtitle: ,
-              ),
-        ),
+      body: Column(
+        children : <Widget> [
+          Image.network(widget.equipements.imgUrl),
+          ListTile(
+            title: Text(
+             widget.equipements.price.toString()+"Dt"
+            ),
+            subtitle: Text(widget.equipements.description),
+          ),
+
+        ];
       ),
     );
   }
