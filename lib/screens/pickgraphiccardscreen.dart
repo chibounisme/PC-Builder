@@ -26,7 +26,7 @@ class _PickGraphicCardScreenState extends State<PickGraphicCardScreen> {
               child: Row(
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundImage: NetworkImage(equipments[index].img_url),
+                    backgroundImage: NetworkImage(equipments[index].imgUrl),
                   ),
                   SizedBox(width: 15),
                 ],
@@ -34,7 +34,7 @@ class _PickGraphicCardScreenState extends State<PickGraphicCardScreen> {
             ),
             children: <Widget>[
               Image.network(
-                equipments[index].img_url,
+                equipments[index].imgUrl,
                 width: double.infinity,
                 height: 150,
                 fit: BoxFit.cover,
@@ -73,23 +73,23 @@ class Equipment {
 }
 */
 //Future<List<Equipment>> remplissagelist() async {
- // List<Equipment> equipments = [];
-  //QuerySnapshot qs = await FirebaseFirestore.instance
-    //  .collection('equipments')
-      // .where("type", isEqualTo: "graphics_card")
-     // .get();
-  //qs.docs.forEach((element) {
-    //equipments.add(Equipment(
-     // name: element.data()['name'],
-      //description: element.data()['description'],
-     // type: element.data()['type'],
-      //img_url: element.data()['img_url'],
-      //price: element.data()['price'].toDouble(),
-     // brand: element.data()['brand'],
-    //));
-  //});
-  //equipments.forEach((element) {
-    //equipments.add(element);
-  //});
-  //return equipments;
+// List<Equipment> equipments = [];
+//QuerySnapshot qs = await FirebaseFirestore.instance
+//  .collection('equipments')
+// .where("type", isEqualTo: "graphics_card")
+// .get();
+//qs.docs.forEach((element) {
+//equipments.add(Equipment(
+// name: element.data()['name'],
+//description: element.data()['description'],
+// type: element.data()['type'],
+//img_url: element.data()['img_url'],
+//price: element.data()['price'].toDouble(),
+// brand: element.data()['brand'],
+//));
+//});
+//equipments.forEach((element) {
+//equipments.add(element);
+//});
+//return equipments;
 //}

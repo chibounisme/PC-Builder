@@ -12,13 +12,13 @@ class _PickGraphState extends State<PickGraph> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      appBar:AppBar(title:Text("Pick a Graphic Card"),
+      appBar: AppBar(
+        title: Text("Pick a Graphic Card"),
         backgroundColor: Colors.pink,
-
       ),
       backgroundColor: Colors.black,
-      body: ListPage(),);
+      body: ListPage(),
+    );
   }
 }
 
@@ -31,7 +31,10 @@ class _ListPageState extends State<ListPage> {
   Future<List<Equipment>> getPosts() async {
     var firestore = FirebaseFirestore.instance;
     //print("hani hne");
-    QuerySnapshot qn = await firestore.collection("equipments").where("type", isEqualTo: "graphics_card").get();
+    QuerySnapshot qn = await firestore
+        .collection("equipments")
+        .where("type", isEqualTo: "graphics_card")
+        .get();
     print(qn.docs);
     return qn.docs
         .map((element) => Equipment(
@@ -44,14 +47,15 @@ class _ListPageState extends State<ListPage> {
             ))
         .toList();
   }
-  navigateToDetail(Equipment equipment){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage(equipment)));
+
+  navigateToDetail(Equipment equipment) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => DetailPage(equipment)));
   }
 
   @override
   Widget build(BuildContext context) {
     return Material(
-
       child: FutureBuilder(
         future: getPosts(),
         builder: (_, snapshot) {
@@ -65,26 +69,23 @@ class _ListPageState extends State<ListPage> {
                 itemBuilder: (_, index) {
                   return ListTile(
                     title: Text(snapshot.data[index].name),
-                    subtitle: Text((snapshot.data[index].price.toString())+'Dt'),
-                    trailing: Icon(
-                      Icons.arrow_forward_sharp,
-                      color: Colors.pink,
-                      size: 24.0
-                    ),
+                    subtitle:
+                        Text((snapshot.data[index].price.toString()) + 'Dt'),
+                    trailing: Icon(Icons.arrow_forward_sharp,
+                        color: Colors.pink, size: 24.0),
                     leading: Container(
                       width: MediaQuery.of(context).size.width * 0.19,
                       child: Row(
                         children: <Widget>[
                           CircleAvatar(
-                            backgroundImage: NetworkImage(snapshot.data[index].img_url),
+                            backgroundImage:
+                                NetworkImage(snapshot.data[index].imgUrl),
                           ),
                           SizedBox(width: 25),
                         ],
                       ),
                     ),
-                    onTap: ()=>navigateToDetail(snapshot.data[index]),
-
-
+                    onTap: () => navigateToDetail(snapshot.data[index]),
                   );
                 });
           } else
@@ -103,24 +104,21 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(title:Text(widget.equipements.name),
+      appBar: AppBar(
+        title: Text(widget.equipements.name),
         backgroundColor: Colors.pink,
       ),
       body: Container(
         child: Card(
           child: ListTile(
-          //  title:,
-            //subtitle: ,
-          ),
+              //  title:,
+              //subtitle: ,
+              ),
         ),
       ),
     );
-
-
   }
 }
