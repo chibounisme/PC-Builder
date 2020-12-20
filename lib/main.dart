@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:pcbuilder/screens/welcomescreen.dart';
 import 'package:pcbuilder/services/auth.dart';
 import 'package:provider/provider.dart';
-//hedha ketbou mootez
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
