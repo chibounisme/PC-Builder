@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 
 // Color Variables
@@ -20,7 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         height: 50.0,
         decoration: new BoxDecoration(
           image: new DecorationImage(
-            image: new AssetImage("assets/images/profilefond.png"),
+            image: new AssetImage("assets/images/pro.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -41,10 +42,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    CircularProfileAvatar(
-                      "",
-                      borderWidth: 4.0,
-                      radius: 80.0,
+                    Container(height: 10),
+                    CircleAvatar(
+                      radius: 90.0,
+                      backgroundImage: new AssetImage('images/hackfest.jpg'),
+                      backgroundColor: Colors.grey,
                     ),
                     SizedBox(height: 4.0),
                     Text(
@@ -64,19 +66,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     Container(height: 10),
                     Text(
-                      "joined on 10/12/2020",
+                      "sahar.boussoukaya@supcom.tn",
                       style: TextStyle(
                         fontSize: 10.0,
-                        color: Colors.grey,
+                        color: Colors.white,
                       ),
                     ),
-                    Container(height: 60),
-                    RaisedButton(
+                    Container(height: 30),
+                    new SizedBox (
+                      width : 300.0,
+                      height: 50.0,
+                      child: new RaisedButton(
                       color: Colors.pink,
                       onPressed: () {},
                       child: Text(
                         'check your settings  ',
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    ),
+                    Container(height: 30),
+                    new SizedBox (
+                      width : 300.0,
+                      height: 50.0,
+                      child: new RaisedButton(
+                        color: Colors.pink,
+                        onPressed: () {},
+                        child: Text(
+                          'create a new setting',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    Container(height: 30),
+                    new SizedBox (
+                      width : 300.0,
+                      height: 50.0,
+                      child: new RaisedButton(
+                        color: Colors.pink,
+                        onPressed: () {},
+                        child: Text(
+                          'update your profile page',
+                          style: TextStyle(color: Colors.white),
+                        ),
+
                       ),
                     ),
                   ],

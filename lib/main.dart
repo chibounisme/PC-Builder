@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:pcbuilder/screens/profilescreen.dart';
 
 import 'package:pcbuilder/screens/welcomescreen.dart';
 import 'package:pcbuilder/services/auth.dart';
