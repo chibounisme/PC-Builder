@@ -37,6 +37,7 @@ dependencies:
   flutter_spinkit: ^4.1.2
   provider: ^4.3.2
   circular_profile_avatar: ^1.0.6
+  get_it: ^5.0.3
 
 dev_dependencies:
   flutter_test:

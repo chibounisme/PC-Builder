@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:pcbuilder/models/configuration.dart';
 import 'package:pcbuilder/models/equipment.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pcbuilder/screens/pickcpu.dart';
@@ -107,6 +109,8 @@ class DetailPage extends StatefulWidget {
 
   DetailPage(this.equipements);
 
+  Equipment get equipment => equipements;
+
   @override
   _DetailPageState createState() => _DetailPageState();
 }
@@ -114,6 +118,7 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
+    final getIt = GetIt.instance;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.equipements.name),
@@ -134,6 +139,7 @@ class _DetailPageState extends State<DetailPage> {
               child: GestureDetector(
                 onTap: () {
                   //sauvgarder element
+                  getIt<Configuration>().graphicsCard = widget.equipment;
                   moveToPage(context, PickCpu());
                 },
                 child: Container(
@@ -151,7 +157,9 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
             ),
-            SizedBox(height: 20,)
+            SizedBox(
+              height: 20,
+            )
           ]),
         ),
       ),
