@@ -28,7 +28,6 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
         title: Text("Final SetUp"),
         backgroundColor: Colors.pink,
       ),
-      backgroundColor: Color(0xFF000000),
       body: ListView(
         children: [
           ListTile(
