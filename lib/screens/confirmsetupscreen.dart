@@ -23,6 +23,12 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
   @override
   Widget build(BuildContext context) {
     Equipment graphicsCard = getIt<Configuration>().graphicsCard;
+    Equipment cpu = getIt<Configuration>().cpu;
+    Equipment motherBoard = getIt<Configuration>().motherboard;
+    Equipment ram = getIt<Configuration>().ram;
+    Equipment ssd = getIt<Configuration>().ssd;
+    Equipment psu = getIt<Configuration>().psu;
+    Equipment hcase = getIt<Configuration>().hcase;
     return Scaffold(
       appBar: AppBar(
         title: Text("Final SetUp"),
@@ -47,6 +53,114 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
               ),
             ),
             onTap: () => navigateToDetail(graphicsCard),
+          ),
+          ListTile(
+            title: Text(cpu.name),
+            subtitle: Text((cpu.price.toString()) + 'Dt'),
+            trailing:
+                Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
+            leading: Container(
+              width: MediaQuery.of(context).size.width * 0.19,
+              child: Row(
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(cpu.imgUrl),
+                  ),
+                  SizedBox(width: 25),
+                ],
+              ),
+            ),
+            onTap: () => navigateToDetail(cpu),
+          ),
+          ListTile(
+            title: Text(motherBoard.name),
+            subtitle: Text((motherBoard.price.toString()) + 'Dt'),
+            trailing:
+                Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
+            leading: Container(
+              width: MediaQuery.of(context).size.width * 0.19,
+              child: Row(
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(motherBoard.imgUrl),
+                  ),
+                  SizedBox(width: 25),
+                ],
+              ),
+            ),
+            onTap: () => navigateToDetail(motherBoard),
+          ),
+          ListTile(
+            title: Text(ram.name),
+            subtitle: Text((ram.price.toString()) + 'Dt'),
+            trailing:
+                Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
+            leading: Container(
+              width: MediaQuery.of(context).size.width * 0.19,
+              child: Row(
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(ram.imgUrl),
+                  ),
+                  SizedBox(width: 25),
+                ],
+              ),
+            ),
+            onTap: () => navigateToDetail(ram),
+          ),
+          ListTile(
+            title: Text(ssd.name),
+            subtitle: Text((ssd.price.toString()) + 'Dt'),
+            trailing:
+                Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
+            leading: Container(
+              width: MediaQuery.of(context).size.width * 0.19,
+              child: Row(
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(ssd.imgUrl),
+                  ),
+                  SizedBox(width: 25),
+                ],
+              ),
+            ),
+            onTap: () => navigateToDetail(ssd),
+          ),
+          ListTile(
+            title: Text(psu.name),
+            subtitle: Text((psu.price.toString()) + 'Dt'),
+            trailing:
+                Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
+            leading: Container(
+              width: MediaQuery.of(context).size.width * 0.19,
+              child: Row(
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(psu.imgUrl),
+                  ),
+                  SizedBox(width: 25),
+                ],
+              ),
+            ),
+            onTap: () => navigateToDetail(psu),
+          ),
+          ListTile(
+            title: Text(hcase.name),
+            subtitle: Text((hcase.price.toString()) + 'Dt'),
+            trailing:
+                Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
+            leading: Container(
+              width: MediaQuery.of(context).size.width * 0.19,
+              child: Row(
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(hcase.imgUrl),
+                  ),
+                  SizedBox(width: 25),
+                ],
+              ),
+            ),
+            onTap: () => navigateToDetail(hcase),
           )
         ],
       ),

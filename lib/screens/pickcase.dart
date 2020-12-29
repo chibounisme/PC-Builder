@@ -5,6 +5,8 @@ import 'package:pcbuilder/models/equipment.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pcbuilder/screens/confirmsetupscreen.dart';
 import 'package:pcbuilder/utils/utils.dart';
+import 'package:get_it/get_it.dart';
+import 'package:pcbuilder/models/configuration.dart';
 
 class PickCase extends StatefulWidget {
   @override
@@ -106,6 +108,7 @@ class DetailPage extends StatefulWidget {
   final Equipment equipements;
 
   DetailPage(this.equipements);
+  Equipment get equipment => equipements;
 
   @override
   _DetailPageState createState() => _DetailPageState();
@@ -114,6 +117,7 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
+    final getIt = GetIt.instance;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.equipements.name),
@@ -134,6 +138,7 @@ class _DetailPageState extends State<DetailPage> {
               child: GestureDetector(
                 onTap: () {
                   //sauvgarder element
+                  getIt<Configuration>().hcase = widget.equipment;
                   moveToPage(context, ConfirmSetup());
                 },
                 child: Container(

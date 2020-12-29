@@ -50,7 +50,7 @@ class Configuration {
     _ssd = ssd;
   }
 
-  set Ram(Equipment ram) {
+  set ram(Equipment ram) {
     _ram = ram;
   }
 

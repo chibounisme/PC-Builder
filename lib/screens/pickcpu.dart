@@ -5,6 +5,8 @@ import 'package:pcbuilder/models/equipment.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pcbuilder/screens/pickmotherboard.dart';
 import 'package:pcbuilder/utils/utils.dart';
+import 'package:pcbuilder/models/configuration.dart';
+import 'package:get_it/get_it.dart';
 
 class PickCpu extends StatefulWidget {
   @override
@@ -40,15 +42,14 @@ class _ListPageState extends State<ListPage> {
         .get();
     print(qn.docs);
     return qn.docs
-        .map((element) =>
-        Equipment(
-          name: element.data()['name'],
-          description: element.data()['description'],
-          type: element.data()['type'],
-          imgUrl: element.data()['img_url'],
-          price: element.data()['price'].toDouble(),
-          brand: element.data()['brand'],
-        ))
+        .map((element) => Equipment(
+              name: element.data()['name'],
+              description: element.data()['description'],
+              type: element.data()['type'],
+              imgUrl: element.data()['img_url'],
+              price: element.data()['price'].toDouble(),
+              brand: element.data()['brand'],
+            ))
         .toList();
   }
 
@@ -77,19 +78,16 @@ class _ListPageState extends State<ListPage> {
                   return ListTile(
                     title: Text(snapshot.data[index].name),
                     subtitle:
-                    Text((snapshot.data[index].price.toString()) + 'Dt'),
+                        Text((snapshot.data[index].price.toString()) + 'Dt'),
                     trailing: Icon(Icons.arrow_forward_sharp,
                         color: Colors.pink, size: 24.0),
                     leading: Container(
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width * 0.19,
+                      width: MediaQuery.of(context).size.width * 0.19,
                       child: Row(
                         children: <Widget>[
                           CircleAvatar(
                             backgroundImage:
-                            NetworkImage(snapshot.data[index].imgUrl),
+                                NetworkImage(snapshot.data[index].imgUrl),
                           ),
                           SizedBox(width: 25),
                         ],
@@ -111,6 +109,8 @@ class DetailPage extends StatefulWidget {
 
   DetailPage(this.equipements);
 
+  Equipment get equipment => equipements;
+
   @override
   _DetailPageState createState() => _DetailPageState();
 }
@@ -118,6 +118,7 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
+    final getIt = GetIt.instance;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.equipements.name),
@@ -125,43 +126,41 @@ class _DetailPageState extends State<DetailPage> {
       ),
       body: Container(
         child: SingleChildScrollView(
-          child: Column(
-              children: <Widget>[
-                Image.network(widget.equipements.imgUrl),
-                ListTile(
-                  title: Text(
-                      widget.equipements.price.toString() + "Dt"
-                  ),
-                  subtitle: Text(widget.equipements.description),
-                ),
-                SizedBox(height: 20,),
-                Container(
-                  child: GestureDetector(
-                    onTap:() {
-                      //sauvgarder element
-                      moveToPage(context, PickMotherBoard());
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xFFBFE2851), width: 2),
-                          borderRadius: BorderRadius.circular(50)),
-                      padding:
-                      EdgeInsets.all(10),
-                      width: 120,
-                      child: Center(
-                        child: Text(
-                          "I Want It !",
-                          style: TextStyle(color: Color(0xFFBFE2851), fontSize: 16),
-                        ),
-                      ),
+          child: Column(children: <Widget>[
+            Image.network(widget.equipements.imgUrl),
+            ListTile(
+              title: Text(widget.equipements.price.toString() + "Dt"),
+              subtitle: Text(widget.equipements.description),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              child: GestureDetector(
+                onTap: () {
+                  //sauvgarder element
+                  getIt<Configuration>().cpu = widget.equipment;
+                  moveToPage(context, PickMotherBoard());
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFFBFE2851), width: 2),
+                      borderRadius: BorderRadius.circular(50)),
+                  padding: EdgeInsets.all(10),
+                  width: 120,
+                  child: Center(
+                    child: Text(
+                      "I Want It !",
+                      style: TextStyle(color: Color(0xFFBFE2851), fontSize: 16),
                     ),
                   ),
-
                 ),
-                SizedBox(height: 20,)
-
-              ]
-          ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            )
+          ]),
         ),
       ),
     );
