@@ -20,6 +20,7 @@ class _PickCpuState extends State<PickCpu> {
       appBar: AppBar(
         title: Text("Pick a CPU"),
         backgroundColor: Colors.pink,
+        elevation: 20,
       ),
       backgroundColor: Color(0xFF000000),
       body: ListPage(),

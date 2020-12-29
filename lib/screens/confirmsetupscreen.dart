@@ -33,6 +33,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
       appBar: AppBar(
         title: Text("Final SetUp"),
         backgroundColor: Colors.pink,
+        elevation: 20,
       ),
       body: ListView(
         children: [

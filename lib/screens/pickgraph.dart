@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:pcbuilder/models/configuration.dart';
 import 'package:pcbuilder/models/equipment.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:pcbuilder/screens/homescreen.dart';
 import 'package:pcbuilder/screens/pickcpu.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
@@ -20,6 +21,12 @@ class _PickGraphState extends State<PickGraph> {
       appBar: AppBar(
         title: Text("Pick a Graphic Card"),
         backgroundColor: Colors.pink,
+        elevation: 20,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.home_filled),
+              onPressed: () => {moveToPage(context, HomeScreen())})
+        ],
       ),
       //backgroundColor: Colors.black,
       body: ListPage(),
@@ -123,6 +130,7 @@ class _DetailPageState extends State<DetailPage> {
       appBar: AppBar(
         title: Text(widget.equipements.name),
         backgroundColor: Colors.pink,
+        elevation: 20,
       ),
       body: Container(
         child: SingleChildScrollView(

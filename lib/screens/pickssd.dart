@@ -20,6 +20,7 @@ class _PickSsdState extends State<PickSsd> {
       appBar: AppBar(
         title: Text("Pick the SSD"),
         backgroundColor: Colors.pink,
+        elevation: 20,
       ),
       backgroundColor: Color(0xFF000000),
       body: ListPage(),
@@ -122,6 +123,7 @@ class _DetailPageState extends State<DetailPage> {
       appBar: AppBar(
         title: Text(widget.equipements.name),
         backgroundColor: Colors.pink,
+        elevation: 20,
       ),
       body: Container(
         child: SingleChildScrollView(
