@@ -7,6 +7,7 @@ import 'package:pcbuilder/screens/pickpsu.dart';
 import 'package:pcbuilder/utils/utils.dart';
 import 'package:pcbuilder/models/configuration.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pcbuilder/screens/homescreen.dart';
 
 class PickSsd extends StatefulWidget {
   @override
