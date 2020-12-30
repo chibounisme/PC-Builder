@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pcbuilder/models/configuration.dart';
 import 'package:pcbuilder/models/equipment.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pcbuilder/screens/pickcase.dart';
 
 final getIt = GetIt.instance;
@@ -20,6 +18,14 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
         MaterialPageRoute(builder: (context) => DetailPage(equipment)));
   }
 
+  navigateToDetail1(Equipment equipment) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => DetailPage1(equipment)));
+  }
+
+  // navigateToDetail12(Equipment equipment) {
+  // Navigator.push(context,
+  //   MaterialPageRoute(builder: (context) => DetailPage(equipment)));
   @override
   Widget build(BuildContext context) {
     Equipment graphicsCard = getIt<Configuration>().graphicsCard;
@@ -161,7 +167,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
                 ],
               ),
             ),
-            onTap: () => navigateToDetail(hcase),
+            onTap: () => navigateToDetail1(hcase),
           )
         ],
       ),

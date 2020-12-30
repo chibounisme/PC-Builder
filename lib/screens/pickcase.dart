@@ -173,3 +173,65 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 }
+
+class DetailPage1 extends StatefulWidget {
+  final Equipment equipements;
+
+  DetailPage1(this.equipements);
+  Equipment get equipment => equipements;
+  @override
+  _DetailPage1State createState() => _DetailPage1State();
+}
+
+class _DetailPage1State extends State<DetailPage1> {
+  @override
+  Widget build(BuildContext context) {
+    //final getIt = GetIt.instance;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.equipements.name),
+        backgroundColor: Colors.pink,
+        elevation: 20,
+      ),
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(children: <Widget>[
+            Image.network(widget.equipements.imgUrl),
+            ListTile(
+              title: Text(widget.equipements.price.toString() + "Dt"),
+              subtitle: Text(widget.equipements.description),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              child: GestureDetector(
+                onTap: () {
+                  //sauvgarder element
+                  //getIt<Configuration>().hcase = widget.equipment;
+                  moveToPage(context, PickCase());
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFFBFE2851), width: 2),
+                      borderRadius: BorderRadius.circular(50)),
+                  padding: EdgeInsets.all(10),
+                  width: 120,
+                  child: Center(
+                    child: Text(
+                      "Change It!",
+                      style: TextStyle(color: Color(0xFFBFE2851), fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            )
+          ]),
+        ),
+      ),
+    );
+  }
+}
