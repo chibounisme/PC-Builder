@@ -21,6 +21,11 @@ class _PickPsuState extends State<PickPsu> {
         title: Text("Pick the PSU"),
         backgroundColor: Colors.pink,
         elevation: 20,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.home_filled),
+              onPressed: () => {moveToPage(context, HomeScreen())})
+        ],
       ),
       backgroundColor: Color(0xFF000000),
       body: ListPage(),

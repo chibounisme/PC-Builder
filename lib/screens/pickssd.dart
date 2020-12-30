@@ -124,6 +124,11 @@ class _DetailPageState extends State<DetailPage> {
         title: Text(widget.equipements.name),
         backgroundColor: Colors.pink,
         elevation: 20,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.home_filled),
+              onPressed: () => {moveToPage(context, HomeScreen())})
+        ],
       ),
       body: Container(
         child: SingleChildScrollView(
