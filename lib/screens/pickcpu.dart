@@ -21,6 +21,11 @@ class _PickCpuState extends State<PickCpu> {
         title: Text("Pick a CPU"),
         backgroundColor: Colors.pink,
         elevation: 20,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.home_filled),
+              onPressed: () => {moveToPage(context, HomeScreen())})
+        ],
       ),
       backgroundColor: Color(0xFF000000),
       body: ListPage(),
