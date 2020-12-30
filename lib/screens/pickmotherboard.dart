@@ -22,6 +22,11 @@ class _PickMotherBoardState extends State<PickMotherBoard> {
         title: Text("Pick a MotherBoard"),
         backgroundColor: Colors.pink,
         elevation: 20,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.home_filled),
+              onPressed: () => {moveToPage(context, HomeScreen())})
+        ],
       ),
       backgroundColor: Color(0xFF000000),
       body: ListPage(),
@@ -125,11 +130,6 @@ class _DetailPageState extends State<DetailPage> {
         title: Text(widget.equipements.name),
         backgroundColor: Colors.pink,
         elevation: 20,
-        actions: [
-          IconButton(
-              icon: Icon(Icons.home_filled),
-              onPressed: () => {moveToPage(context, HomeScreen())})
-        ],
       ),
       body: Container(
         child: SingleChildScrollView(
