@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pcbuilder/models/homegriditem.dart';
 import 'package:pcbuilder/screens/ProfileScreen.dart';
+import 'package:pcbuilder/screens/newscreen.dart';
 import 'package:pcbuilder/screens/pickgraph.dart';
+import 'package:pcbuilder/screens/settingsScreen.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
 // Color Variables
@@ -172,10 +174,10 @@ List<HomeGridItem> items = [
       title: 'News',
       icon: Icons.new_releases,
       subtitle: 'More news about the latest in computer gaming.',
-      target: null),
+      target: NewsScreen()),
   HomeGridItem(
       title: 'Settings',
       icon: Icons.settings,
-      subtitle: 'Change the application settings, or Logout.',
-      target: null),
+      subtitle: 'Change the application settings.',
+      target: SettingsScreen()),
 ];
