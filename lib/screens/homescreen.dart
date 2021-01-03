@@ -8,8 +8,8 @@ import 'package:pcbuilder/utils/utils.dart';
 // Color Variables
 Color color_1 = Color(0xFFBC7C7C7);
 Color color_2 = Color(0xFFBB9B9B9);
-Color color_3 = Color(0xFFBFE2851);
-Color color_4 = Color(0xFFF453658);
+Color color_3 = Colors.pink[400];
+Color color_4 = Colors.pink[400];
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     padding: EdgeInsets.only(left: 10, right: 10),
                     decoration: BoxDecoration(
-                      color: Colors.redAccent,
+                      color: Colors.pink,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 100,
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                        color: color_3,
+                        color: Colors.pink,
                         // border: Border.all(color: Colors.white, width: 2),
                         borderRadius: BorderRadius.circular(50)),
                     child: Center(
@@ -119,14 +119,15 @@ class HomeScreenGrid extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.all(15),
                   decoration: BoxDecoration(
-                      color: color_4, borderRadius: BorderRadius.circular(10)),
+                      color: Colors.grey[600],
+                      borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
                         el.icon,
                         size: 60,
-                        color: Colors.grey[600],
+                        color: Colors.white,
                       ),
                       SizedBox(height: 14),
                       Text(
