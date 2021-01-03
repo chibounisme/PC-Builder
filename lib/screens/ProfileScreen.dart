@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
+import 'package:provider/provider.dart';
 
 // Color Variables
 Color color_1 = Color(0xFFBC7C7C7);
@@ -16,6 +17,8 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    var data = Provider.of<User>(context);
+    print(data);
     return Material(
       child: Container(
         height: 50.0,
@@ -80,7 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       color: Colors.pink,
                       onPressed: () {},
                       child: Text(
-                        'check your settings  ',
+                        'check your configurations  ',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -93,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: Colors.pink,
                         onPressed: () {},
                         child: Text(
-                          'create a new setting',
+                          'create a new configuration',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),

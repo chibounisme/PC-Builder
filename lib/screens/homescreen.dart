@@ -126,7 +126,7 @@ class HomeScreenGrid extends StatelessWidget {
                       Icon(
                         el.icon,
                         size: 60,
-                        color: Colors.deepPurple[600],
+                        color: Colors.grey[600],
                       ),
                       SizedBox(height: 14),
                       Text(

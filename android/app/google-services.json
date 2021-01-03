@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "897362622662-e4mb80glfbn9ruandgujdlvo6iqfrk87.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mypack.pcbuilder",
+            "certificate_hash": "e5bf617490c54d215ed6f3f43acf2c9841758ac3"
+          }
+        },
+        {
           "client_id": "897362622662-num18fmit90infpv9meocb7jr1opje2n.apps.googleusercontent.com",
           "client_type": 3
         }
