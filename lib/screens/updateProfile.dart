@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
+import 'package:fluttertoast/fluttertoast.dart';
+
 class updateProfile extends StatefulWidget {
   @override
   _updateProfileState createState() => _updateProfileState();
@@ -70,11 +72,68 @@ class _updateProfileState extends State<updateProfile> {
                             height: 50.0,
                           ),
                           SizedBox(height: 4.0),
-                          Text(
-                            userDocument["name"],
-                            style: TextStyle(
-                              fontSize: 30.0,
-                              color: Colors.white,
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Color(0xFFBC7C7C7), width: 2),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                    width: 60,
+                                    child: Icon(
+                                      Icons.account_box_sharp,
+                                      size: 20,
+                                      color: Colors.white,
+                                    )),
+                                Expanded(
+                                  child: TextFormField(
+                                    style: TextStyle(color: Colors.white),
+                                    decoration: InputDecoration(
+                                        hintStyle: TextStyle(
+                                            fontSize: 16.0,
+                                            color: Colors.white),
+                                        contentPadding:
+                                            EdgeInsets.symmetric(vertical: 20),
+                                        border: InputBorder.none,
+                                        hintText:
+                                            "Enter your new name"),
+                                    onChanged: (value) {
+
+                                    },
+                                    validator: (value) {
+                                      if (value.isEmpty) {
+                                        return 'Please enter a valid title';
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                Container(height: 60),
+                          Container(
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Color(0xFFBFE2851),
+                                      borderRadius: BorderRadius.circular(50)),
+                                  padding: EdgeInsets.all(10),
+                                  height: 40,
+                                  width: 175,
+                                  child: Center(
+                                    child: Text(
+                                      "Save",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 16),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ],
