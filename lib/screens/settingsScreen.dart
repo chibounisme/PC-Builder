@@ -90,9 +90,9 @@ class _PickCurrencyState extends State<PickCurrency> {
     Fluttertoast.showToast(
         msg: "This is Center Short Toast",
         toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 3,
+        backgroundColor: Colors.blue,
         textColor: Colors.white,
         fontSize: 16.0);
     Navigator.pushReplacement(
