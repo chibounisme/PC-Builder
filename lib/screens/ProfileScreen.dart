@@ -93,11 +93,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.white,
                             ),
                           ),
-                          Container(height: 30),
+                          Container(height: 60),
                           new SizedBox(
                             width: 300.0,
                             height: 50.0,
                             child: new RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(color: Colors.red)
+                              ),
                               color: Colors.pink,
                               onPressed: () {},
                               child: Text(
@@ -106,26 +110,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                           ),
-                          Container(height: 30),
+                          Container(height: 60),
+
                           new SizedBox(
                             width: 300.0,
                             height: 50.0,
                             child: new RaisedButton(
-                              color: Colors.pink,
-                              onPressed: () {
-                                moveToPage(context, PickGraph());
-                              },
-                              child: Text(
-                                'create a new configuration',
-                                style: TextStyle(color: Colors.white),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(color: Colors.red)
                               ),
-                            ),
-                          ),
-                          Container(height: 30),
-                          new SizedBox(
-                            width: 300.0,
-                            height: 50.0,
-                            child: new RaisedButton(
                               color: Colors.pink,
                               onPressed: () {
                                 moveToPage(context,updateProfile());

@@ -46,10 +46,40 @@ class _updateProfileState extends State<updateProfile>{
                       Navigator.pop(context);
                     })
               ])),
-        ],
+      Align(
+      alignment: Alignment(0, -0.5),
+      child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+      Container(height: 10),
+      CircleAvatar(
+      radius: 90.0,
+      backgroundImage:
+      new NetworkImage(userDocument["photo"]),
+      backgroundColor: Colors.grey,
+      ),
+        Container(height: 30),
+        new SizedBox(
+          width: 200.0,
+          height: 50.0,
+        ),
+      SizedBox(height: 4.0),
+      Text(
+      userDocument["name"],
+      style: TextStyle(
+      fontSize: 30.0,
+      color: Colors.white,
+      ),
+      ),
+
+      ],
+      ),
+      ),
+      ],
       );
     }),
-  ),
-  ),
-  );
-  }}
+            ),
+        ),
+    );
+  }
+}
