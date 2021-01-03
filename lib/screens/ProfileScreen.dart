@@ -7,6 +7,7 @@ import 'package:pcbuilder/screens/pickgraph.dart';
 import 'package:pcbuilder/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:pcbuilder/screens/updateProfile.dart';
 
 // Color Variables
 Color color_1 = Color(0xFFBC7C7C7);
@@ -126,7 +127,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             height: 50.0,
                             child: new RaisedButton(
                               color: Colors.pink,
-                              onPressed: () {},
+                              onPressed: () {
+                                moveToPage(context,updateProfile());
+                              },
                               child: Text(
                                 'update your profile page',
                                 style: TextStyle(color: Colors.white),
