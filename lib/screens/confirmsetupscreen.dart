@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pcbuilder/models/configuration.dart';
 import 'package:pcbuilder/models/equipment.dart';
+import 'package:pcbuilder/screens/loginscreen.dart';
 import 'package:pcbuilder/screens/pickcase.dart';
+import 'package:pcbuilder/utils/utils.dart';
 
 final getIt = GetIt.instance;
 
@@ -35,6 +37,13 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
     Equipment ssd = getIt<Configuration>().ssd;
     Equipment psu = getIt<Configuration>().psu;
     Equipment hcase = getIt<Configuration>().hcase;
+    double pricetot = graphicsCard.price +
+        cpu.price +
+        motherBoard.price +
+        ram.price +
+        ssd.price +
+        psu.price +
+        hcase.price;
     return Scaffold(
       appBar: AppBar(
         title: Text("Final SetUp"),
@@ -59,7 +68,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
                 ],
               ),
             ),
-            onTap: () => navigateToDetail(graphicsCard),
+            onTap: () => navigateToDetail1(graphicsCard),
           ),
           ListTile(
             title: Text(cpu.name),
@@ -77,7 +86,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
                 ],
               ),
             ),
-            onTap: () => navigateToDetail(cpu),
+            onTap: () => navigateToDetail1(cpu),
           ),
           ListTile(
             title: Text(motherBoard.name),
@@ -95,7 +104,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
                 ],
               ),
             ),
-            onTap: () => navigateToDetail(motherBoard),
+            onTap: () => navigateToDetail1(motherBoard),
           ),
           ListTile(
             title: Text(ram.name),
@@ -113,7 +122,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
                 ],
               ),
             ),
-            onTap: () => navigateToDetail(ram),
+            onTap: () => navigateToDetail1(ram),
           ),
           ListTile(
             title: Text(ssd.name),
@@ -131,7 +140,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
                 ],
               ),
             ),
-            onTap: () => navigateToDetail(ssd),
+            onTap: () => navigateToDetail1(ssd),
           ),
           ListTile(
             title: Text(psu.name),
@@ -149,7 +158,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
                 ],
               ),
             ),
-            onTap: () => navigateToDetail(psu),
+            onTap: () => navigateToDetail1(psu),
           ),
           ListTile(
             title: Text(hcase.name),
@@ -168,7 +177,65 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
               ),
             ),
             onTap: () => navigateToDetail1(hcase),
-          )
+          ),
+          Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 2),
+                borderRadius: BorderRadius.circular(50)),
+            padding: EdgeInsets.all(20),
+            height: 20,
+          ),
+          Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 2),
+                borderRadius: BorderRadius.circular(50)),
+            padding: EdgeInsets.symmetric(),
+            height: 60,
+            child: Center(
+              child: Text(
+                "Total=" + pricetot.toStringAsFixed(3) + " Dt",
+                style: TextStyle(color: Color(0xFFBFE2851), fontSize: 16),
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 2),
+                borderRadius: BorderRadius.circular(50)),
+            padding: EdgeInsets.all(20),
+            height: 20,
+          ),
+          Container(
+            child: GestureDetector(
+              onTap: () {
+                //moveToPage(context, LoginScreen());
+              },
+              child: Align(
+                alignment: Alignment.center,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color(0xFFBFE2851),
+                      borderRadius: BorderRadius.circular(50)),
+                  padding: EdgeInsets.all(10),
+                  height: 40,
+                  width: 175,
+                  child: Center(
+                    child: Text(
+                      "Save Configuration",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 2),
+                borderRadius: BorderRadius.circular(50)),
+            padding: EdgeInsets.all(10),
+            height: 20,
+          ),
         ],
       ),
     );

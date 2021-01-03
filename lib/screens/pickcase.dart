@@ -204,28 +204,6 @@ class _DetailPage1State extends State<DetailPage1> {
             SizedBox(
               height: 20,
             ),
-            Container(
-              child: GestureDetector(
-                onTap: () {
-                  //sauvgarder element
-                  //getIt<Configuration>().hcase = widget.equipment;
-                  moveToPage(context, PickCase());
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFFBFE2851), width: 2),
-                      borderRadius: BorderRadius.circular(50)),
-                  padding: EdgeInsets.all(10),
-                  width: 120,
-                  child: Center(
-                    child: Text(
-                      "Change It!",
-                      style: TextStyle(color: Color(0xFFBFE2851), fontSize: 16),
-                    ),
-                  ),
-                ),
-              ),
-            ),
             SizedBox(
               height: 20,
             )
