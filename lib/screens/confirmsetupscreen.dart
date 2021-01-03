@@ -5,6 +5,7 @@ import 'package:pcbuilder/models/configuration.dart';
 import 'package:pcbuilder/models/equipment.dart';
 import 'package:pcbuilder/screens/loginscreen.dart';
 import 'package:pcbuilder/screens/pickcase.dart';
+import 'package:pcbuilder/screens/saveconfig.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
 final getIt = GetIt.instance;
@@ -180,14 +181,14 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
           ),
           Container(
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 2),
+                border: Border.all(color: Colors.white, width: 0),
                 borderRadius: BorderRadius.circular(50)),
             padding: EdgeInsets.all(20),
             height: 20,
           ),
           Container(
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 2),
+                border: Border.all(color: Colors.white, width: 0),
                 borderRadius: BorderRadius.circular(50)),
             padding: EdgeInsets.symmetric(),
             height: 60,
@@ -200,7 +201,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
           ),
           Container(
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 2),
+                border: Border.all(color: Colors.white, width: 0),
                 borderRadius: BorderRadius.circular(50)),
             padding: EdgeInsets.all(20),
             height: 20,
@@ -208,7 +209,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
           Container(
             child: GestureDetector(
               onTap: () {
-                //moveToPage(context, LoginScreen());
+                moveToPage(context, SaveConfig());
               },
               child: Align(
                 alignment: Alignment.center,
@@ -231,7 +232,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
           ),
           Container(
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 2),
+                border: Border.all(color: Colors.white, width: 0),
                 borderRadius: BorderRadius.circular(50)),
             padding: EdgeInsets.all(10),
             height: 20,
