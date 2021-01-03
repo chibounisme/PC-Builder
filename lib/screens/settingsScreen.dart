@@ -88,7 +88,7 @@ class _PickCurrencyState extends State<PickCurrency> {
         .doc(widget.userUID)
         .set({"currency": selectedRadio});
     Fluttertoast.showToast(
-        msg: "This is Center Short Toast",
+        msg: "Changed currency successfully!",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 3,
