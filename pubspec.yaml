@@ -39,6 +39,8 @@ dependencies:
   circular_profile_avatar: ^1.0.6
   get_it: ^5.0.3
   timeago: ^2.0.29
+  settings_ui: ^0.5.0
+  fluttertoast: ^7.1.6
 
 dev_dependencies:
   flutter_test:

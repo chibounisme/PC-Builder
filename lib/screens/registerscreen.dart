@@ -209,6 +209,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             'https://firebasestorage.googleapis.com/v0/b/flutter-pc-builder.appspot.com/o/inconnu.png?alt=media&token=8cfb4464-e364-425c-bee0-356953b32600',
                         'date': DateTime.now()
                       });
+                      await FirebaseFirestore.instance
+                          .collection('settings')
+                          .doc(user.uid)
+                          .set({"currency": "USD"});
                       Navigator.pop(context);
                       print(user);
                     }

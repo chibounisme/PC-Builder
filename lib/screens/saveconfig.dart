@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get_it/get_it.dart';
+import 'package:pcbuilder/models/configuration.dart';
 import 'package:pcbuilder/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 import 'homescreen.dart';
 
@@ -12,6 +17,7 @@ class SaveConfig extends StatefulWidget {
 
 class _SaveConfigState extends State<SaveConfig> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String _title, _description;
   String _saveError = "";
   bool loading = false;
 
@@ -69,13 +75,13 @@ class _SaveConfigState extends State<SaveConfig> {
                                   contentPadding:
                                       EdgeInsets.symmetric(vertical: 20),
                                   border: InputBorder.none,
-                                  hintText: "Enter Configuration name.."),
+                                  hintText: "Enter Configuration title.."),
                               onChanged: (value) {
-                                //setState(() => _configname = value);
+                                setState(() => _title = value);
                               },
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Please enter a valid name';
+                                  return 'Please enter a valid title';
                                 }
                                 return null;
                               },
@@ -113,7 +119,7 @@ class _SaveConfigState extends State<SaveConfig> {
                                   hintText:
                                       "\n" + "Enter a short Description.."),
                               onChanged: (value) {
-                                //setState(() => _description = value);
+                                setState(() => _description = value);
                               },
                             ),
                           )
@@ -139,13 +145,24 @@ class _SaveConfigState extends State<SaveConfig> {
                         if (_formKey.currentState.validate()) {
                           setState(() => loading = true);
                           //ajouter les élements a la base
-                          //if (user == null) {
-                          // setState(() => loading = false);
-                          //setState(() => _saveError =
-                          //   "Wrong Email/Password Combination");
-                          //} else {
-                          // moveToPage(context, HomeScreen());
-                          //}
+                          User user = Provider.of<User>(context, listen: false);
+                          Configuration conf = GetIt.instance<Configuration>();
+                          await FirebaseFirestore.instance
+                              .collection('configurations')
+                              .add({
+                            "title": _title,
+                            "description": _description,
+                            "user": user.uid,
+                            "created_at": DateTime.now(),
+                            "cpu": conf.cpu.id,
+                            "graphics_card": conf.graphicsCard.id,
+                            "motherboard": conf.motherboard.id,
+                            "psu": conf.psu.id,
+                            "ram": conf.ram.id,
+                            "ssd": conf.ssd.id,
+                            "case": conf.hcase.id
+                          });
+                          moveToPage(context, HomeScreen());
                         }
                       },
                       child: Container(

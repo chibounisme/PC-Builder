@@ -47,9 +47,9 @@ class _ListPageState extends State<ListPage> {
         .collection("equipments")
         .where("type", isEqualTo: "cpu")
         .get();
-    print(qn.docs);
     return qn.docs
         .map((element) => Equipment(
+              id: element.id,
               name: element.data()['name'],
               description: element.data()['description'],
               type: element.data()['type'],

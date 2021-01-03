@@ -5,6 +5,7 @@ class Equipment {
   String description;
   String type;
   String brand;
+  String id;
 
   Equipment(
       {this.imgUrl,
@@ -12,10 +13,11 @@ class Equipment {
       this.name,
       this.description,
       this.type,
-      this.brand});
+      this.brand,
+      this.id});
 
   @override
   String toString() {
-    return "$name -- $type -- $price";
+    return "$id -- $name -- $type -- $price";
   }
 }
