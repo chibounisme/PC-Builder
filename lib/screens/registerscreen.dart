@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pcbuilder/services/auth.dart';
@@ -198,6 +199,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       setState(() => creationErrorExists = true);
                       print('Problem when creating the user');
                     } else {
+                      // sahar mrigl
+                      await FirebaseFirestore.instance
+                          .collection('profile')
+                          .doc(user.uid)
+                          .set({
+                        'name': 'Inconnu',
+                        'photo':
+                            'https://firebasestorage.googleapis.com/v0/b/flutter-pc-builder.appspot.com/o/inconnu.png?alt=media&token=8cfb4464-e364-425c-bee0-356953b32600',
+                        'date': DateTime.now()
+                      });
                       Navigator.pop(context);
                       print(user);
                     }
