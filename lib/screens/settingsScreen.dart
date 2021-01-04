@@ -117,6 +117,13 @@ class _PickCurrencyState extends State<PickCurrency> {
       appBar: AppBar(
         title: Text('Choose your currency'),
         centerTitle: true,
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => SettingsScreen()));
+          },
+        ),
       ),
       body: Material(
         child: Column(
