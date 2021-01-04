@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get_it/get_it.dart';
 import 'package:pcbuilder/screens/homescreen.dart';
 
 import 'package:pcbuilder/screens/registerscreen.dart';
 import 'package:pcbuilder/services/auth.dart';
+import 'package:pcbuilder/utils/currencies.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -159,6 +162,20 @@ class _LoginScreenState extends State<LoginScreen> {
                               setState(() => loginError =
                                   "Wrong Email/Password Combination");
                             } else {
+                              DocumentSnapshot qs = await FirebaseFirestore
+                                  .instance
+                                  .collection("settings")
+                                  .doc(user.uid)
+                                  .get();
+
+                              GetIt.instance<Currencies>().currentCurrency =
+                                  qs.data()['currency'];
+                              GetIt.instance<Currencies>()
+                                      .currentConversionRate =
+                                  await Currencies.getConversionRate(
+                                      "USD", qs.data()['currency']);
+                              print(
+                                  "New conversion rate is ${GetIt.instance<Currencies>().currentConversionRate}");
                               moveToPage(context, HomeScreen());
                             }
                           }
@@ -178,8 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           color: Colors.white, fontSize: 16),
                                     ),
                             )),
-                      )
-                      ),
+                      )),
                     ],
                   )),
               SizedBox(height: 20),

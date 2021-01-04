@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get_it/get_it.dart';
 import 'package:pcbuilder/utils/currencies.dart';
 import 'package:provider/provider.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -23,6 +24,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
+    print(user);
     return Scaffold(
       appBar: AppBar(
         title: Text('Settings'),
@@ -87,6 +89,12 @@ class _PickCurrencyState extends State<PickCurrency> {
         .collection('settings')
         .doc(widget.userUID)
         .set({"currency": selectedRadio});
+
+    GetIt.instance<Currencies>().currentCurrency = selectedRadio;
+    GetIt.instance<Currencies>().currentConversionRate =
+        await Currencies.getConversionRate("USD", selectedRadio);
+    print(
+        "New conversion rate is ${GetIt.instance<Currencies>().currentConversionRate}");
     Fluttertoast.showToast(
         msg: "Changed currency successfully!",
         toastLength: Toast.LENGTH_SHORT,

@@ -7,6 +7,7 @@ import 'package:pcbuilder/models/equipment.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pcbuilder/screens/homescreen.dart';
 import 'package:pcbuilder/screens/pickcpu.dart';
+import 'package:pcbuilder/utils/currencies.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
 class PickGraph extends StatefulWidget {
@@ -85,8 +86,12 @@ class _ListPageState extends State<ListPage> {
                 itemBuilder: (_, index) {
                   return ListTile(
                     title: Text(snapshot.data[index].name),
-                    subtitle:
-                        Text((snapshot.data[index].price.toString()) + 'Dt'),
+                    subtitle: Text((snapshot.data[index].price *
+                                GetIt.instance<Currencies>()
+                                    .currentConversionRate)
+                            .toStringAsFixed(3) +
+                        ' ' +
+                        GetIt.instance<Currencies>().currentCurrency),
                     trailing: Icon(Icons.arrow_forward_sharp,
                         color: Colors.pink, size: 24.0),
                     leading: Container(
@@ -138,7 +143,11 @@ class _DetailPageState extends State<DetailPage> {
           child: Column(children: <Widget>[
             Image.network(widget.equipements.imgUrl),
             ListTile(
-              title: Text(widget.equipements.price.toString() + "Dt"),
+              title: Text((widget.equipements.price *
+                          GetIt.instance<Currencies>().currentConversionRate)
+                      .toStringAsFixed(3) +
+                  ' ' +
+                  GetIt.instance<Currencies>().currentCurrency),
               subtitle: Text(widget.equipements.description),
             ),
             SizedBox(

@@ -6,6 +6,7 @@ import 'package:pcbuilder/models/equipment.dart';
 import 'package:pcbuilder/screens/loginscreen.dart';
 import 'package:pcbuilder/screens/pickcase.dart';
 import 'package:pcbuilder/screens/saveconfig.dart';
+import 'package:pcbuilder/utils/currencies.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
 final getIt = GetIt.instance;
@@ -55,7 +56,11 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
         children: [
           ListTile(
             title: Text(graphicsCard.name),
-            subtitle: Text((graphicsCard.price.toString()) + 'Dt'),
+            subtitle: Text((graphicsCard.price *
+                        GetIt.instance<Currencies>().currentConversionRate)
+                    .toStringAsFixed(3) +
+                ' ' +
+                GetIt.instance<Currencies>().currentCurrency),
             trailing:
                 Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
             leading: Container(
@@ -73,7 +78,11 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
           ),
           ListTile(
             title: Text(cpu.name),
-            subtitle: Text((cpu.price.toString()) + 'Dt'),
+            subtitle: Text(
+                (cpu.price * GetIt.instance<Currencies>().currentConversionRate)
+                        .toStringAsFixed(3) +
+                    ' ' +
+                    GetIt.instance<Currencies>().currentCurrency),
             trailing:
                 Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
             leading: Container(
@@ -91,7 +100,11 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
           ),
           ListTile(
             title: Text(motherBoard.name),
-            subtitle: Text((motherBoard.price.toString()) + 'Dt'),
+            subtitle: Text((motherBoard.price *
+                        GetIt.instance<Currencies>().currentConversionRate)
+                    .toStringAsFixed(3) +
+                ' ' +
+                GetIt.instance<Currencies>().currentCurrency),
             trailing:
                 Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
             leading: Container(
@@ -109,7 +122,11 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
           ),
           ListTile(
             title: Text(ram.name),
-            subtitle: Text((ram.price.toString()) + 'Dt'),
+            subtitle: Text(
+                (ram.price * GetIt.instance<Currencies>().currentConversionRate)
+                        .toStringAsFixed(3) +
+                    ' ' +
+                    GetIt.instance<Currencies>().currentCurrency),
             trailing:
                 Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
             leading: Container(
@@ -127,7 +144,11 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
           ),
           ListTile(
             title: Text(ssd.name),
-            subtitle: Text((ssd.price.toString()) + 'Dt'),
+            subtitle: Text(
+                (ssd.price * GetIt.instance<Currencies>().currentConversionRate)
+                        .toStringAsFixed(3) +
+                    ' ' +
+                    GetIt.instance<Currencies>().currentCurrency),
             trailing:
                 Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
             leading: Container(
@@ -145,7 +166,11 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
           ),
           ListTile(
             title: Text(psu.name),
-            subtitle: Text((psu.price.toString()) + 'Dt'),
+            subtitle: Text(
+                (psu.price * GetIt.instance<Currencies>().currentConversionRate)
+                        .toStringAsFixed(3) +
+                    ' ' +
+                    GetIt.instance<Currencies>().currentCurrency),
             trailing:
                 Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
             leading: Container(
@@ -163,7 +188,11 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
           ),
           ListTile(
             title: Text(hcase.name),
-            subtitle: Text((hcase.price.toString()) + 'Dt'),
+            subtitle: Text((hcase.price *
+                        GetIt.instance<Currencies>().currentConversionRate)
+                    .toStringAsFixed(3) +
+                ' ' +
+                GetIt.instance<Currencies>().currentCurrency),
             trailing:
                 Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
             leading: Container(
@@ -194,7 +223,12 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
             height: 60,
             child: Center(
               child: Text(
-                "Total=" + pricetot.toStringAsFixed(3) + " Dt",
+                "Total = " +
+                    (pricetot *
+                            GetIt.instance<Currencies>().currentConversionRate)
+                        .toStringAsFixed(3) +
+                    ' ' +
+                    GetIt.instance<Currencies>().currentCurrency,
                 style: TextStyle(color: Color(0xFFBFE2851), fontSize: 16),
               ),
             ),

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:pcbuilder/models/equipment.dart';
 
 class Configuration {

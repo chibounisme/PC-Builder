@@ -6,6 +6,7 @@ import 'package:pcbuilder/screens/homescreen.dart';
 
 import 'package:pcbuilder/screens/welcomescreen.dart';
 import 'package:pcbuilder/services/auth.dart';
+import 'package:pcbuilder/utils/currencies.dart';
 import 'package:provider/provider.dart';
 
 final getIt = GetIt.instance;
@@ -15,6 +16,7 @@ void main() async {
   await Firebase.initializeApp();
   runApp(MyApp());
   getIt.registerSingleton<Configuration>(Configuration());
+  getIt.registerSingleton<Currencies>(Currencies());
 }
 
 class MyApp extends StatelessWidget {
