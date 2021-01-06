@@ -25,38 +25,52 @@ class Configuration {
   //   return "Hello guys,Check out my new set up made with the App Pc-Builder:/n";
   // }
 
+  // ignore: unnecessary_getters_setters
   Equipment get graphicsCard => _graphicscard;
+  // ignore: unnecessary_getters_setters
   Equipment get cpu => _cpu;
+  // ignore: unnecessary_getters_setters
   Equipment get motherboard => _motherboard;
+  // ignore: unnecessary_getters_setters
   Equipment get ssd => _ssd;
+  // ignore: unnecessary_getters_setters
   Equipment get ram => _ram;
+  // ignore: unnecessary_getters_setters
   Equipment get psu => _psu;
+  // ignore: unnecessary_getters_setters
   Equipment get hcase => _case;
 
+  // ignore: unnecessary_getters_setters
   set graphicsCard(Equipment graphicsCard) {
     _graphicscard = graphicsCard;
   }
 
+  // ignore: unnecessary_getters_setters
   set cpu(Equipment cpu) {
     _cpu = cpu;
   }
 
+  // ignore: unnecessary_getters_setters
   set motherboard(Equipment motherboard) {
     _motherboard = motherboard;
   }
 
+  // ignore: unnecessary_getters_setters
   set ssd(Equipment ssd) {
     _ssd = ssd;
   }
 
+  // ignore: unnecessary_getters_setters
   set ram(Equipment ram) {
     _ram = ram;
   }
 
+  // ignore: unnecessary_getters_setters
   set psu(Equipment psu) {
     _psu = psu;
   }
 
+  // ignore: unnecessary_getters_setters
   set hcase(Equipment hcase) {
     _case = hcase;
   }

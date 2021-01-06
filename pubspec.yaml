@@ -46,6 +46,16 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.8.1
+  flutter_native_splash: ^0.1.9
+
+flutter_icons:
+  android: true
+  image_path: "assets/images/logo_image.png"
+
+flutter_native_splash:
+  image: assets/images/background.png
+  color: "000000"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

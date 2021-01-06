@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:pcbuilder/screens/updateProfile.dart';
 import 'package:pcbuilder/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:pcbuilder/screens/updateProfile.dart';
 
 // Color Variables
 Color color_1 = Color(0xFFBC7C7C7);
@@ -118,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   side: BorderSide(color: Colors.red)),
                               color: Colors.pink,
                               onPressed: () {
-                                moveToPage(context, updateProfile());
+                                moveToPage(context, UpdateProfile());
                               },
                               child: Text(
                                 'update your profile page',

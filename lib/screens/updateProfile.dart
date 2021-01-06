@@ -10,13 +10,15 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
 
-class updateProfile extends StatefulWidget {
+class UpdateProfile extends StatefulWidget {
   @override
-  _updateProfileState createState() => _updateProfileState();
+  _UpdateProfileState createState() => _UpdateProfileState();
 }
 
-class _updateProfileState extends State<updateProfile> {
+class _UpdateProfileState extends State<UpdateProfile> {
   String _imageUrl;
+  String _name;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   _uploadImage(PickedFile file) async {
     File im = File(file.path);
@@ -202,24 +204,29 @@ class _updateProfileState extends State<updateProfile> {
                                       size: 20,
                                       color: Colors.white,
                                     )),
-                                Expanded(
-                                  child: TextFormField(
-                                    style: TextStyle(color: Colors.white),
-                                    decoration: InputDecoration(
-                                        hintStyle: TextStyle(
-                                            fontSize: 16.0,
-                                            color: Colors.white),
-                                        contentPadding:
-                                            EdgeInsets.symmetric(vertical: 20),
-                                        border: InputBorder.none,
-                                        hintText: "Enter your new name"),
-                                    onChanged: (value) {},
-                                    validator: (value) {
-                                      if (value.isEmpty) {
-                                        return 'Please enter a valid title';
-                                      }
-                                      return null;
-                                    },
+                                Form(
+                                  key: _formKey,
+                                  child: Expanded(
+                                    child: TextFormField(
+                                      style: TextStyle(color: Colors.white),
+                                      decoration: InputDecoration(
+                                          hintStyle: TextStyle(
+                                              fontSize: 16.0,
+                                              color: Colors.white),
+                                          contentPadding: EdgeInsets.symmetric(
+                                              vertical: 20),
+                                          border: InputBorder.none,
+                                          hintText: "Enter your new name"),
+                                      onChanged: (value) {
+                                        _name = value;
+                                      },
+                                      validator: (value) {
+                                        if (value.isEmpty) {
+                                          return 'Please enter a valid name';
+                                        }
+                                        return null;
+                                      },
+                                    ),
                                   ),
                                 )
                               ],
@@ -228,7 +235,29 @@ class _updateProfileState extends State<updateProfile> {
                           Container(height: 60),
                           Container(
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () async {
+                                FocusScopeNode currentFocus =
+                                    FocusScope.of(context);
+                                if (!currentFocus.hasPrimaryFocus) {
+                                  currentFocus.unfocus();
+                                }
+                                if (_formKey.currentState.validate()) {
+                                  final user =
+                                      Provider.of<User>(context, listen: false);
+                                  await FirebaseFirestore.instance
+                                      .collection('profile')
+                                      .doc(user.uid)
+                                      .update({'name': _name});
+                                  Fluttertoast.showToast(
+                                      msg: "Changed name successfully!",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 5,
+                                      backgroundColor: Color(0xFFBFE2851),
+                                      textColor: Colors.white,
+                                      fontSize: 16.0);
+                                }
+                              },
                               child: Align(
                                 alignment: Alignment.center,
                                 child: Container(

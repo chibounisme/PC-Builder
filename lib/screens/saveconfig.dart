@@ -168,9 +168,9 @@ class _SaveConfigState extends State<SaveConfig> {
                             moveToPage(context, HomeScreen());
                             Fluttertoast.showToast(
                                 msg: "Added configuration successfully!",
-                                toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.BOTTOM,
-                                timeInSecForIosWeb: 3,
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.SNACKBAR,
+                                timeInSecForIosWeb: 5,
                                 backgroundColor: Colors.blue,
                                 textColor: Colors.white,
                                 fontSize: 16.0);

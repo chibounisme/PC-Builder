@@ -29,6 +29,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         title: Text('Settings'),
         centerTitle: true,
+        backgroundColor: Colors.pink,
       ),
       body: FutureBuilder(
         future: getUserCurrency(user.uid),
@@ -101,7 +102,7 @@ class _PickCurrencyState extends State<PickCurrency> {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 3,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.pink,
         textColor: Colors.white,
         fontSize: 16.0);
     Navigator.pushReplacement(
@@ -125,6 +126,7 @@ class _PickCurrencyState extends State<PickCurrency> {
                 MaterialPageRoute(builder: (context) => SettingsScreen()));
           },
         ),
+        backgroundColor: Colors.pink,
       ),
       body: Material(
         child: Column(
