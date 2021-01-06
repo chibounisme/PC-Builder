@@ -62,6 +62,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 }
 
+// ignore: must_be_immutable
 class PickCurrency extends StatefulWidget {
   String currentCurrency;
   String userUID;

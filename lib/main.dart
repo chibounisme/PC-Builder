@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pcbuilder/models/configuration.dart';
-import 'package:pcbuilder/screens/homescreen.dart';
 
 import 'package:pcbuilder/screens/welcomescreen.dart';
 import 'package:pcbuilder/services/auth.dart';

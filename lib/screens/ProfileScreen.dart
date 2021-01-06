@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:pcbuilder/screens/pickgraph.dart';
 import 'package:pcbuilder/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -100,8 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: new RaisedButton(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0),
-                                  side: BorderSide(color: Colors.red)
-                              ),
+                                  side: BorderSide(color: Colors.red)),
                               color: Colors.pink,
                               onPressed: () {},
                               child: Text(
@@ -111,18 +109,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           Container(height: 60),
-
                           new SizedBox(
                             width: 300.0,
                             height: 50.0,
                             child: new RaisedButton(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0),
-                                  side: BorderSide(color: Colors.red)
-                              ),
+                                  side: BorderSide(color: Colors.red)),
                               color: Colors.pink,
                               onPressed: () {
-                                moveToPage(context,updateProfile());
+                                moveToPage(context, updateProfile());
                               },
                               child: Text(
                                 'update your profile page',

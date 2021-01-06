@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pcbuilder/models/configuration.dart';
 import 'package:pcbuilder/models/equipment.dart';
-import 'package:pcbuilder/screens/loginscreen.dart';
 import 'package:pcbuilder/screens/pickcase.dart';
 import 'package:pcbuilder/screens/saveconfig.dart';
 import 'package:pcbuilder/utils/currencies.dart';
