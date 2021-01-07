@@ -38,7 +38,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             return SettingsList(
               sections: [
                 SettingsSection(
-                  title: 'General',
                   tiles: [
                     SettingsTile(
                       title: 'Currency',

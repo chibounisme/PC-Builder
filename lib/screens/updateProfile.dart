@@ -18,6 +18,9 @@ class UpdateProfile extends StatefulWidget {
 class _UpdateProfileState extends State<UpdateProfile> {
   String _imageUrl;
   String _name;
+  bool nameChangeLoading = false;
+  bool imageChangeLoading = false;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   _uploadImage(PickedFile file) async {
@@ -101,84 +104,133 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                       showModalBottomSheet(
                                           context: context,
                                           builder: (context) {
-                                            return Container(
-                                              height: 150,
-                                              child: Column(
-                                                children: [
-                                                  ListTile(
-                                                      leading:
-                                                          Icon(Icons.camera),
-                                                      title:
-                                                          Text('Take a photo'),
-                                                      onTap: () async {
-                                                        // take image from the camera
-                                                        PickedFile file =
-                                                            await ImagePicker()
-                                                                .getImage(
-                                                                    source: ImageSource
-                                                                        .camera);
-                                                        if (file != null) {
-                                                          await _uploadImage(
-                                                              file);
-                                                          Navigator.pop(
-                                                              context);
-                                                          Fluttertoast.showToast(
-                                                              msg:
-                                                                  "Changed picture successfully!",
-                                                              toastLength: Toast
-                                                                  .LENGTH_SHORT,
-                                                              gravity:
-                                                                  ToastGravity
-                                                                      .BOTTOM,
-                                                              timeInSecForIosWeb:
-                                                                  3,
-                                                              backgroundColor:
-                                                                  Color(
-                                                                      0xFFBFE2851),
-                                                              textColor:
-                                                                  Colors.white,
-                                                              fontSize: 16.0);
-                                                        }
-                                                      }),
-                                                  ListTile(
-                                                      leading:
-                                                          Icon(Icons.image),
-                                                      title: Text(
-                                                          'Select a photo from Gallery'),
-                                                      onTap: () async {
-                                                        // select a photo from the gallery
-                                                        PickedFile file =
-                                                            await ImagePicker()
-                                                                .getImage(
-                                                                    source: ImageSource
-                                                                        .gallery);
-                                                        if (file != null) {
-                                                          await _uploadImage(
-                                                              file);
-                                                          print('yes!');
-                                                          Navigator.pop(
-                                                              context);
-                                                          Fluttertoast.showToast(
-                                                              msg:
-                                                                  "Changed picture successfully!",
-                                                              toastLength: Toast
-                                                                  .LENGTH_SHORT,
-                                                              gravity:
-                                                                  ToastGravity
-                                                                      .BOTTOM,
-                                                              timeInSecForIosWeb:
-                                                                  3,
-                                                              backgroundColor:
-                                                                  Color(
-                                                                      0xFFBFE2851),
-                                                              textColor:
-                                                                  Colors.white,
-                                                              fontSize: 16.0);
-                                                        }
-                                                      }),
-                                                ],
-                                              ),
-                                            );
+                                            return StatefulBuilder(builder:
+                                                (BuildContext context,
+                                                    StateSetter setState) {
+                                              return Container(
+                                                height: 150,
+                                                child: imageChangeLoading ==
+                                                        true
+                                                    ? Center(
+                                                        child: ListView(
+                                                          shrinkWrap: true,
+                                                          children: [
+                                                            SpinKitDualRing(
+                                                                color:
+                                                                    Colors.pink,
+                                                                size: 32),
+                                                            Center(
+                                                              child: Text(
+                                                                  'Uploading image...'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    : Column(
+                                                        children: [
+                                                          ListTile(
+                                                              leading: Icon(
+                                                                  Icons.camera),
+                                                              title: Text(
+                                                                  'Take a photo'),
+                                                              onTap: () async {
+                                                                // take image from the camera
+                                                                PickedFile
+                                                                    file =
+                                                                    await ImagePicker()
+                                                                        .getImage(
+                                                                            source:
+                                                                                ImageSource.camera);
+                                                                if (file !=
+                                                                    null) {
+                                                                  setState(() {
+                                                                    imageChangeLoading =
+                                                                        true;
+                                                                  });
+                                                                  await _uploadImage(
+                                                                      file);
+                                                                  setState(() {
+                                                                    imageChangeLoading =
+                                                                        false;
+                                                                  });
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                  Fluttertoast.showToast(
+                                                                      msg:
+                                                                          "Changed picture successfully!",
+                                                                      toastLength:
+                                                                          Toast
+                                                                              .LENGTH_SHORT,
+                                                                      gravity: ToastGravity
+                                                                          .BOTTOM,
+                                                                      timeInSecForIosWeb:
+                                                                          3,
+                                                                      backgroundColor:
+                                                                          Color(
+                                                                              0xFFBFE2851),
+                                                                      textColor:
+                                                                          Colors
+                                                                              .white,
+                                                                      fontSize:
+                                                                          16.0);
+                                                                }
+                                                              }),
+                                                          ListTile(
+                                                              leading: Icon(
+                                                                  Icons.image),
+                                                              title: Text(
+                                                                  'Select a photo from Gallery'),
+                                                              onTap: () async {
+                                                                // select a photo from the gallery
+                                                                PickedFile
+                                                                    file =
+                                                                    await ImagePicker()
+                                                                        .getImage(
+                                                                            source:
+                                                                                ImageSource.gallery);
+                                                                if (file !=
+                                                                    null) {
+                                                                  setState(() {
+                                                                    imageChangeLoading =
+                                                                        true;
+                                                                    print(
+                                                                        imageChangeLoading);
+                                                                  });
+                                                                  await _uploadImage(
+                                                                      file);
+                                                                  print('yes!');
+                                                                  setState(() {
+                                                                    imageChangeLoading =
+                                                                        false;
+                                                                    print(
+                                                                        imageChangeLoading);
+                                                                  });
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                  Fluttertoast.showToast(
+                                                                      msg:
+                                                                          "Changed picture successfully!",
+                                                                      toastLength:
+                                                                          Toast
+                                                                              .LENGTH_SHORT,
+                                                                      gravity: ToastGravity
+                                                                          .BOTTOM,
+                                                                      timeInSecForIosWeb:
+                                                                          3,
+                                                                      backgroundColor:
+                                                                          Color(
+                                                                              0xFFBFE2851),
+                                                                      textColor:
+                                                                          Colors
+                                                                              .white,
+                                                                      fontSize:
+                                                                          16.0);
+                                                                }
+                                                              }),
+                                                        ],
+                                                      ),
+                                              );
+                                            });
                                           });
                                     }),
                               ],
@@ -242,12 +294,18 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                   currentFocus.unfocus();
                                 }
                                 if (_formKey.currentState.validate()) {
+                                  setState(() {
+                                    nameChangeLoading = true;
+                                  });
                                   final user =
                                       Provider.of<User>(context, listen: false);
                                   await FirebaseFirestore.instance
                                       .collection('profile')
                                       .doc(user.uid)
                                       .update({'name': _name});
+                                  setState(() {
+                                    nameChangeLoading = false;
+                                  });
                                   Fluttertoast.showToast(
                                       msg: "Changed name successfully!",
                                       toastLength: Toast.LENGTH_SHORT,
@@ -268,11 +326,15 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                   height: 40,
                                   width: 175,
                                   child: Center(
-                                    child: Text(
-                                      "Save",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 16),
-                                    ),
+                                    child: nameChangeLoading
+                                        ? SpinKitDualRing(
+                                            color: Colors.black, size: 22)
+                                        : Text(
+                                            "Save new name",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 16),
+                                          ),
                                   ),
                                 ),
                               ),
