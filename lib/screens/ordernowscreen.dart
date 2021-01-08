@@ -12,40 +12,39 @@ class _OrderNowState extends State<OrderNow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Colors.grey,
       appBar: AppBar(
         title: Text("Order Now!"),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.pink,
         elevation: 20,
       ),
       body: GridView.count(
         crossAxisCount: 1,
+        padding: EdgeInsets.all(16.0),
         childAspectRatio: 3.0,
+        crossAxisSpacing: 10.0,
+        mainAxisSpacing: 10.0,
         children: <Widget>[
           myGridItems(
-              "Golden Pc",
-              "https://d1fmx1rbmqrxrr.cloudfront.net/cnet/optim/i/edit/2019/04/eso1644bsmall__w770.jpg",
-              0xff00FFFD,
-              0xff00FFFD),
-          myGridItems(
               "SBS Informatique",
-              "https://d1fmx1rbmqrxrr.cloudfront.net/cnet/optim/i/edit/2019/04/eso1644bsmall__w770.jpg",
-              0xffFFAC00,
-              0xffFFAC00),
+              "https://www.keejob.com/media/recruiter/recruiter_21846/logo-21846-20201026-174656.png",
+              0xffF4E4BA,
+              0xffF4E4BA),
           myGridItems(
               "MEGA PC",
-              "https://d1fmx1rbmqrxrr.cloudfront.net/cnet/optim/i/edit/2019/04/eso1644bsmall__w770.jpg",
-              0xffFCFF00,
-              0xffFCFF00),
+              "https://megapc.tn/assets/images/icon/logo.png",
+              0xff000000,
+              0xff000000),
           myGridItems(
               "WIKI",
-              "https://d1fmx1rbmqrxrr.cloudfront.net/cnet/optim/i/edit/2019/04/eso1644bsmall__w770.jpg",
-              0xff33E903,
-              0xff33E903),
+              "https://www.keejob.com/media/recruiter/recruiter_12899/logo-12899-20170421-165921.png",
+              0xff000000,
+              0xff000000),
           myGridItems(
               "MyTeck",
-              "https://d1fmx1rbmqrxrr.cloudfront.net/cnet/optim/i/edit/2019/04/eso1644bsmall__w770.jpg",
-              0xffFF00FB,
-              0xffFF00FB),
+              "https://cdn.discordapp.com/attachments/786675454303535124/797127009989558333/avatar-removebg-preview.png",
+              0xff000000,
+              0xff000000),
         ],
       ),
     );
@@ -60,68 +59,73 @@ Widget myGridItems(String gridName, String gridimage, int color1, int color2) {
     padding: EdgeInsets.symmetric(),
     child: Container(
       decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(24.0),
           gradient: new LinearGradient(
-        begin: Alignment.topRight,
-        end: Alignment.topLeft,
-        colors: [
-          Color(color1),
-          Color(color2),
-        ],
-      )),
+            begin: Alignment.centerLeft,
+            end: Alignment(1.0, 1.0),
+            colors: [
+              Color(color1),
+              Color(color2),
+            ],
+          )),
       child: Stack(
         children: <Widget>[
           Opacity(
-            opacity: 0.3,
+            opacity: 0.9,
             child: Container(
               decoration: new BoxDecoration(
+                  borderRadius: BorderRadius.circular(24.0),
                   image: DecorationImage(
-                image: new NetworkImage(gridimage),
-                fit: BoxFit.fill,
-              )),
+                    image: new NetworkImage(gridimage),
+                    fit: BoxFit.fill,
+                  )),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: Text(
-                  gridName,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                      child: Text(
-                    "Check",
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  )),
-                  SizedBox(
-                    width: 10.0,
-                  ),
-                  Container(
-                      child: Icon(
-                    Icons.map_outlined,
-                    color: Colors.white,
-                  )),
-                  SizedBox(
-                    width: 10.0,
-                  ),
-                  Container(
-                      child: Text(
-                    "Locations",
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  )),
-                ],
-              )),
-            ],
-          )
+          // Column(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: <Widget>[
+          //     Padding(
+          //       padding: const EdgeInsets.only(left: 16.0),
+          //       child: Text(
+          //         gridName,
+          //         style: TextStyle(
+          //             color: Colors.white,
+          //             fontSize: 20,
+          //             fontWeight: FontWeight.bold),
+          //       ),
+          //     ),
+          //     Container(
+          //         child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       children: <Widget>[
+          //         Container(
+          //             child: Text(
+          //           "Check",
+          //           style: TextStyle(color: Colors.white, fontSize: 16),
+          //         )),
+          //         SizedBox(
+          //           width: 10.0,
+          //         ),
+          //         Container(
+          //             child: Icon(
+          //           Icons.map_outlined,
+          //           color: Colors.white,
+          //         )),
+          //         SizedBox(
+          //           width: 10.0,
+          //         ),
+          //         Container(
+          //             child: Text(
+          //           "Locations",
+          //           style: TextStyle(color: Colors.white, fontSize: 16),
+          //         )),
+          //       ],
+          //     )),
+          //     SizedBox(
+          //       height: 10.0,
+          //     )
+          //   ],
+          // )
         ],
       ),
     ),
