@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pcbuilder/screens/loginscreen.dart';
+import 'package:pcbuilder/utils/utils.dart';
 
 class OrderNow extends StatefulWidget {
   @override
@@ -10,39 +12,45 @@ class _OrderNowState extends State<OrderNow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.grey,
       appBar: AppBar(
         title: Text("Order Now!"),
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.black,
         elevation: 20,
       ),
       body: GridView.count(
         crossAxisCount: 1,
-        padding: EdgeInsets.all(16.0),
         childAspectRatio: 3.0,
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
         children: <Widget>[
           myGridItems(
+              "Golden Pc",
+              "https://lh3.googleusercontent.com/proxy/2xMZcT3yXtbduQS5pvzhOTHJiUtOFVyozuu1l5ZSLMZ5WrsC-_0EZwPjrqIAUA5QyLIqouFhnva_fuI286Lj2vQhUWoVDNCsW9Zbhi7qlhO5YXnsRXmxJXMQjYK4",
+              0xff353839,
+              0xff353839),
+          myGridItems(
               "SBS Informatique",
-              "https://www.keejob.com/media/recruiter/recruiter_21846/logo-21846-20201026-174656.png",
-              0xffF4E4BA,
-              0xffF4E4BA),
+              "https://www.leparisien.fr/resizer/gbtv5s1tpUyS3EaMZVv8wmfsVHQ=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/3OFN5BKSSH443T2SHDEBDGOBLY.jpg",
+              0xff0E1111,
+              0xff0E1111),
           myGridItems(
               "MEGA PC",
-              "https://megapc.tn/assets/images/icon/logo.png",
-              0xff000000,
-              0xff000000),
+              "https://www.sauvesouris.com/wp-content/uploads/2019/07/eda64c0a10fb395884fddec13045439b-696x464.jpg",
+              0xff353839,
+              0xff353839),
           myGridItems(
               "WIKI",
-              "https://www.keejob.com/media/recruiter/recruiter_12899/logo-12899-20170421-165921.png",
-              0xff000000,
-              0xff000000),
+              "https://assets.prod-blog.avira.com/wp-content/uploads/2018/04/gaming-pc-2018.jpg",
+              0xff0E1111,
+              0xff0E1111),
           myGridItems(
               "MyTeck",
-              "https://cdn.discordapp.com/attachments/786675454303535124/797127009989558333/avatar-removebg-preview.png",
-              0xff000000,
-              0xff000000),
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS99XEavhBfUvIXRdW1HpXAIcSwSDe83h9NGQ&usqp=CAU",
+              0xff353839,
+              0xff353839),
+          myGridItems(
+              "tak tech",
+              "https://i2.wp.com/www.element-gaming.eu/wp-content/uploads/2020/06/image-3.png?fit=1280%2C622&ssl=1",
+              0xff0E1111,
+              0xff0E1111),
         ],
       ),
     );
@@ -57,10 +65,9 @@ Widget myGridItems(String gridName, String gridimage, int color1, int color2) {
     padding: EdgeInsets.symmetric(),
     child: Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24.0),
           gradient: new LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment(1.0, 1.0),
+            begin: Alignment.topRight,
+            end: Alignment.topLeft,
             colors: [
               Color(color1),
               Color(color2),
@@ -69,61 +76,57 @@ Widget myGridItems(String gridName, String gridimage, int color1, int color2) {
       child: Stack(
         children: <Widget>[
           Opacity(
-            opacity: 0.9,
+            opacity: 0.3,
             child: Container(
               decoration: new BoxDecoration(
-                  borderRadius: BorderRadius.circular(24.0),
                   image: DecorationImage(
                     image: new NetworkImage(gridimage),
                     fit: BoxFit.fill,
                   )),
             ),
           ),
-          // Column(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: <Widget>[
-          //     Padding(
-          //       padding: const EdgeInsets.only(left: 16.0),
-          //       child: Text(
-          //         gridName,
-          //         style: TextStyle(
-          //             color: Colors.white,
-          //             fontSize: 20,
-          //             fontWeight: FontWeight.bold),
-          //       ),
-          //     ),
-          //     Container(
-          //         child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       children: <Widget>[
-          //         Container(
-          //             child: Text(
-          //           "Check",
-          //           style: TextStyle(color: Colors.white, fontSize: 16),
-          //         )),
-          //         SizedBox(
-          //           width: 10.0,
-          //         ),
-          //         Container(
-          //             child: Icon(
-          //           Icons.map_outlined,
-          //           color: Colors.white,
-          //         )),
-          //         SizedBox(
-          //           width: 10.0,
-          //         ),
-          //         Container(
-          //             child: Text(
-          //           "Locations",
-          //           style: TextStyle(color: Colors.white, fontSize: 16),
-          //         )),
-          //       ],
-          //     )),
-          //     SizedBox(
-          //       height: 10.0,
-          //     )
-          //   ],
-          // )
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: Text(
+                  gridName,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                          child: Text(
+                            "Check",
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          )),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      Container(
+                          child: Icon(
+                            Icons.map_outlined,
+                            color: Colors.white,
+                          )),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      Container(
+                          child: Text(
+                            "Locations",
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          )),
+                    ],
+                  )),
+            ],
+          )
         ],
       ),
     ),
