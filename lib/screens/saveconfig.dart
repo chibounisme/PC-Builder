@@ -171,7 +171,7 @@ class _SaveConfigState extends State<SaveConfig> {
                                 toastLength: Toast.LENGTH_LONG,
                                 gravity: ToastGravity.SNACKBAR,
                                 timeInSecForIosWeb: 5,
-                                backgroundColor: Colors.blue,
+                                backgroundColor: Colors.pink,
                                 textColor: Colors.white,
                                 fontSize: 16.0);
                           }

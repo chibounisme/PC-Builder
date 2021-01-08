@@ -61,7 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(
                                     color: Color(0xFFFFFFFFF),
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w600))
+                                    fontWeight: FontWeight.w600)),
+                            SizedBox(height: 25),
                           ],
                         ),
                         Container(
@@ -73,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   )),
-              SizedBox(height: 100),
+              SizedBox(height: 80),
               HomeScreenGrid(),
               Container(
                   child: GestureDetector(
