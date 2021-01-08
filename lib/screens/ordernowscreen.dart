@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pcbuilder/screens/loginscreen.dart';
-import 'package:pcbuilder/utils/utils.dart';
 
 class OrderNow extends StatefulWidget {
   @override

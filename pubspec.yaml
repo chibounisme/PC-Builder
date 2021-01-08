@@ -21,7 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-
+  flutter_map: any
+  font_awesome_flutter: 8.7.0
   flutter_redux: ^0.7.0
   flutter:
     sdk: flutter
