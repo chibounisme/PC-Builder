@@ -8,6 +8,8 @@ import 'package:url_launcher/url_launcher.dart';
 class SbsMapScreen extends StatefulWidget {
   @override
   _SbsMapScreenState createState() => _SbsMapScreenState();
+  int ind;
+  SbsMapScreen({ind});
 }
 
 class _SbsMapScreenState extends State<SbsMapScreen> {
@@ -125,6 +127,12 @@ class _SbsMapScreenState extends State<SbsMapScreen> {
                                               child: ListTile(
                                                 leading: Icon(
                                                     FontAwesomeIcons.facebook),
+                                                title: Text(
+                                                  "ffffff",
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 15.0),
+                                                ),
                                               ),
                                             )
                                           ],

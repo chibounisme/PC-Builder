@@ -275,7 +275,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
           Container(
             child: GestureDetector(
               onTap: () {
-                moveToPage(context, SbsMapScreen());
+                moveToPage(context, OrderNow());
               },
               child: Align(
                 alignment: Alignment.center,
