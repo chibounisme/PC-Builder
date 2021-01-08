@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import "package:latlong/latlong.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SbsMapScreen extends StatefulWidget {
   @override
@@ -60,12 +61,74 @@ class _SbsMapScreenState extends State<SbsMapScreen> {
                                 builder: (builder) {
                                   return Scaffold(
                                     appBar: AppBar(
-                                      title: Text("**********"),
+                                      title: Column(
+                                        children: [
+                                          Text("SBS Informatique"),
+                                          Text(
+                                            "sousse,....",
+                                            style: TextStyle(fontSize: 10.0),
+                                          )
+                                        ],
+                                      ),
                                       backgroundColor: Colors.pink,
                                       leading: IconButton(
                                         icon:
                                             Icon(FontAwesomeIcons.mapMarkedAlt),
                                         onPressed: () {},
+                                      ),
+                                    ),
+                                    body: Container(
+                                      child: Center(
+                                        child: ListView(
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: 15.0,
+                                                  right: 15.0,
+                                                  bottom: 5.0),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    RaisedButton.icon(
+                                                        icon: Icon(
+                                                            FontAwesomeIcons
+                                                                .phone),
+                                                        label: Text("Call"),
+                                                        onPressed: () {
+                                                          launch(
+                                                              "tel://21213123123");
+                                                        }),
+                                                    RaisedButton.icon(
+                                                        icon: Icon(
+                                                            FontAwesomeIcons
+                                                                .globe),
+                                                        label: Text("Website"),
+                                                        onPressed: () {}),
+                                                    SizedBox(
+                                                      width: 10.0,
+                                                    ),
+                                                    RaisedButton.icon(
+                                                        icon: Icon(
+                                                            FontAwesomeIcons
+                                                                .facebook),
+                                                        label: Text("Facebook"),
+                                                        onPressed: () {})
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.all(1.0),
+                                              child: ListTile(
+                                                leading: Icon(
+                                                    FontAwesomeIcons.facebook),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   );
