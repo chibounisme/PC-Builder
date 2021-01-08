@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pcbuilder/models/configuration.dart';
 import 'package:pcbuilder/models/equipment.dart';
+import 'package:pcbuilder/screens/ordernowscreen.dart';
 import 'package:pcbuilder/screens/pickcase.dart';
 import 'package:pcbuilder/screens/saveconfig.dart';
 import 'package:pcbuilder/utils/currencies.dart';
@@ -256,6 +257,37 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
                   child: Center(
                     child: Text(
                       "Save Configuration",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 0),
+                borderRadius: BorderRadius.circular(50)),
+            padding: EdgeInsets.all(10),
+            height: 20,
+          ),
+          Container(
+            child: GestureDetector(
+              onTap: () {
+                moveToPage(context, OrderNow());
+              },
+              child: Align(
+                alignment: Alignment.center,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color(0xFFBFE2851),
+                      borderRadius: BorderRadius.circular(50)),
+                  padding: EdgeInsets.all(10),
+                  height: 40,
+                  width: 175,
+                  child: Center(
+                    child: Text(
+                      "Order Now!",
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),
