@@ -45,14 +45,15 @@ class _MapScreenState extends State<MapScreen> {
                 markers: fournisseurs[widget.index].boutiques.map((el) {
               print("el is $el");
               return _createMarker(fournisseurs[widget.index].name,
-                  fournisseurs[widget.index].subtitle, boutiques[el]);
+                  boutiques[el].ville, boutiques[el]);
             }).toList())
           ],
         ));
   }
 
   Marker _createMarker(name, subtitle, boutique) {
-    print("data is please : ${boutique.lat} -- ${boutique.long}");
+    print(
+        "data is please : ${boutique.lat} -- ${boutique.long} -- ${boutique.clock} --${boutique.telephone}--${boutique.location},${boutique.adresse}");
     return new Marker(
         width: 80.0,
         height: 90.0,
@@ -71,7 +72,7 @@ class _MapScreenState extends State<MapScreen> {
                               children: [
                                 Text(name),
                                 Text(
-                                  subtitle,
+                                  boutique.ville,
                                   style: TextStyle(fontSize: 10.0),
                                 )
                               ],
@@ -121,9 +122,22 @@ class _MapScreenState extends State<MapScreen> {
                                   Padding(
                                     padding: EdgeInsets.all(1.0),
                                     child: ListTile(
-                                      leading: Icon(FontAwesomeIcons.facebook),
+                                      leading:
+                                          Icon(FontAwesomeIcons.mapMarkedAlt),
                                       title: Text(
-                                        boutique.facebook,
+                                        boutique.location,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15.0),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(1.0),
+                                    child: ListTile(
+                                      leading: Icon(FontAwesomeIcons.clock),
+                                      title: Text(
+                                        boutique.clock,
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 15.0),
@@ -145,6 +159,18 @@ class _MapScreenState extends State<MapScreen> {
                                   Padding(
                                     padding: EdgeInsets.all(1.0),
                                     child: ListTile(
+                                      leading: Icon(FontAwesomeIcons.facebook),
+                                      title: Text(
+                                        boutique.facebook,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15.0),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(1.0),
+                                    child: ListTile(
                                       leading: Icon(FontAwesomeIcons.phone),
                                       title: Text(
                                         boutique.telephone,
@@ -153,7 +179,7 @@ class _MapScreenState extends State<MapScreen> {
                                             fontSize: 15.0),
                                       ),
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
@@ -165,39 +191,140 @@ class _MapScreenState extends State<MapScreen> {
             ));
   }
 
+//sbs
   static Boutique b1 = new Boutique(
-      lat: 34.056340,
-      long: -118.232050,
-      telephone: "+216 99 999 999",
-      adresse: "Hello world my name is Mohamed",
-      facebook: "https://www.facebook.com/7low");
-
+      lat: 36.84530789831604,
+      long: 10.197408830319691,
+      location: "Boulevard de la Terre, Tunis 1082",
+      clock: "Etablissement ouvert: 09:00-15:00",
+      adresse: "http://www.sbsinformatique.com/",
+      facebook: "https://www.facebook.com/SBSinformatique/",
+      telephone: "+216 37 367 627",
+      ville: "Tunis");
+//megapc
   static Boutique b2 = new Boutique(
-      lat: 38.056340,
-      long: -118.232050,
-      telephone: "+216 99 999 999",
-      adresse: "Hello world my name is Taz",
-      facebook: "https://www.facebook.com/7low");
-  List<Boutique> boutiques = [b1, b2];
+      lat: 36.88137963578576,
+      long: 10.258106148126334,
+      location: "6 Boulevard de l'Environnement, Tunis 2045",
+      clock: "Etablissement ouvert: 10:00-18:00",
+      adresse: "http://www.megapc.tn/",
+      facebook: "https://www.facebook.com/GoMegaPC/",
+      telephone: "+216 23 835 420",
+      ville: "Tunis");
+
+  static Boutique b3 = new Boutique(
+      lat: 35.84420512498313,
+      long: 10.59913988425045,
+      location: "Sousse-سوسة",
+      clock: "Etablissement ouvert: 08:00-18:00",
+      adresse: "http://www.mega-pc.net/",
+      facebook: "https://www.facebook.com/GoMegaPC/",
+      telephone: "+216 28 087 395",
+      ville: "Sousse");
+  //wiki
+  static Boutique b4 = new Boutique(
+      lat: 35.90973513344572,
+      long: 10.645858148988829,
+      location: "Rue Bechir Sfar N°2 à côté de l'Ecole des Soeurs, Sousse 4000",
+      clock: "Etablissement ouvert: 09:00-19:00",
+      adresse: "http://www.wiki.tn/",
+      facebook: "https://www.facebook.com/WIKIOfficiel",
+      telephone: "+216 73 200 452",
+      ville: "Sousse");
+  static Boutique b5 = new Boutique(
+      lat: 35.77169151587987,
+      long: 10.113021216615886,
+      location: "Rue Habib Thameur, Kairouan",
+      clock: "Etablissement ouvert: 08:30-19:00",
+      adresse: "http://www.wiki.tn/",
+      facebook: "https://www.facebook.com/WIKIOfficiel",
+      telephone: "+216 28 540 427",
+      ville: "Kairouan");
+  static Boutique b6 = new Boutique(
+      lat: 36.80773926485048,
+      long: 10.2118981731387,
+      location: "18 Avenue Martyrs, El Mourouj",
+      clock: "Etablissement ouvert: 09:00-19:00",
+      adresse: "http://www.wiki.tn/",
+      facebook: "https://www.facebook.com/WIKIOfficiel",
+      telephone: "+216 79 359 441",
+      ville: "Mourouj");
+  static Boutique b7 = new Boutique(
+      lat: 36.90004373009158,
+      long: 10.129500709369688,
+      location: "38, Avenue de l'indépendence, saidia - bardo 2000",
+      clock: "Etablissement ouvert: 09:00-19:00",
+      adresse: "http://www.wiki.tn/",
+      facebook: "https://www.facebook.com/WIKIOfficiel",
+      telephone: "+216 71 660 830",
+      ville: "Bardo");
+  //mytek
+  static Boutique b8 = new Boutique(
+      lat: 36.87085471791034,
+      long: 10.21152808070387,
+      location: "rue de l'industrie, Tunis 2035",
+      clock: "Etablissement ouvert: 08:00-18:00",
+      adresse: "https://www.mytek.tn/",
+      facebook: "https://www.facebook.com/Mytek.tn",
+      telephone: "+216 36 010 010",
+      ville: "Tunis");
+  static Boutique b9 = new Boutique(
+      lat: 36.45455272942149,
+      long: 10.743236868782134,
+      location:
+          "Avenue Ali Belhouane route Dar Chaâbene El Fehri، Nabeul‎ 8011",
+      clock: "Etablissement ouvert: 09:00-13:00,14:00-17:00",
+      adresse: "https://www.mytek.tn/",
+      facebook: "https://www.facebook.com/Mytek.tn",
+      telephone: "+216 72 220 666",
+      ville: "Nabeul");
+  static Boutique b10 = new Boutique(
+      lat: 35.83236015011552,
+      long: 10.633074326435255,
+      location: "Rue El Farabi, Sousse 4000",
+      clock: "Etablissement ouvert: 09:00-13:00,14:00-17:00",
+      adresse: "https://www.mytek.tn/",
+      facebook: "https://www.facebook.com/Mytek.tn",
+      telephone: "+216 73 201 801",
+      ville: "Sousse");
+  static Boutique b11 = new Boutique(
+      lat: 36.809469808941984,
+      long: 10.179930255301317,
+      location: "Avenue de La Liberté, Tunis 1002",
+      clock: "Etablissement ouvert: 09:00-13:00,14:00-17:00",
+      adresse: "https://www.mytek.tn/",
+      facebook: "https://www.facebook.com/Mytek.tn",
+      telephone: "+216 71 832 832",
+      ville: "Tunis");
+
+  List<Boutique> boutiques = [b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11];
 
   static Fournisseur f1 = Fournisseur(
-      "SBS Informatique", "ville", [0, 1], 34.056340, -118.232050, 13.0);
-  static Fournisseur f2 =
-      Fournisseur("shishi", "ville", [1], 34.056340, -118.232050, 13.0);
-  List<Fournisseur> fournisseurs = [f1, f2];
+      "SBS Informatique", [0], 36.84530789831604, 10.197408830319691, 13.0);
+  static Fournisseur f2 = Fournisseur(
+      "Mega Pc", [1, 2], 36.319512288619975, 10.389922583376729, 8.0);
+  static Fournisseur f3 = Fournisseur(
+      "Wiki", [3, 4, 5, 6], 36.20678725799245, 10.185396652642895, 8.0);
+  static Fournisseur f4 = Fournisseur(
+      "Mytek", [7, 8, 9, 10], 36.20678725799245, 10.185396652642895, 8.0);
+  static Fournisseur f5 =
+      Fournisseur("Mytek", [], 36.20678725799245, 10.185396652642895, 8.0);
+  static Fournisseur f6 =
+      Fournisseur("Mytek", [], 36.20678725799245, 10.185396652642895, 8.0);
+  List<Fournisseur> fournisseurs = [f1, f2, f3, f4, f5, f6];
 }
 
 class Fournisseur {
   String name;
-  String subtitle;
+
   double centerLat;
   double centerLong;
   double zoomba;
   var boutiques = [];
 
-  Fournisseur(name, subtitle, boutiques, centerLat, centerLong, zoomba) {
+  Fournisseur(name, boutiques, centerLat, centerLong, zoomba) {
     this.name = name;
-    this.subtitle = subtitle;
+
     this.centerLat = centerLat;
     this.centerLong = centerLong;
     this.zoomba = zoomba;
@@ -210,21 +337,27 @@ class Fournisseur {
   //   this.boutiques = f.boutiques.map((el) => Boutique.create(el)).toList();
   // }
 
-  String toString() => "$name - $subtitle";
 }
 
 class Boutique {
   double lat;
   double long;
-  String telephone;
+  String location;
+  String clock;
   String adresse;
   String facebook;
-  Boutique({lat, long, telephone, adresse, facebook}) {
+  String telephone;
+  String ville;
+
+  Boutique({lat, long, location, clock, adresse, facebook, telephone, ville}) {
     this.lat = lat;
     this.long = long;
-    this.telephone = telephone;
+    this.clock = clock;
+    this.location = location;
     this.adresse = adresse;
     this.facebook = facebook;
+    this.telephone = telephone;
+    this.ville = ville;
   }
 
   // Boutique.create(Boutique b) {

@@ -22,13 +22,6 @@ class _OrderNowState extends State<OrderNow> {
           childAspectRatio: 3.0,
           children: <Widget>[
             myGridItems(
-                "Golden Pc",
-                "https://pngimg.com/uploads/computer_pc/computer_pc_PNG17486.png",
-                0xff353839,
-                0xff353839,
-                context,
-                0),
-            myGridItems(
                 "SBS Informatique",
                 "https://www.leparisien.fr/resizer/gbtv5s1tpUyS3EaMZVv8wmfsVHQ=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/3OFN5BKSSH443T2SHDEBDGOBLY.jpg",
                 0xff0E1111,
@@ -41,28 +34,35 @@ class _OrderNowState extends State<OrderNow> {
                 0xff353839,
                 0xff353839,
                 context,
-                0),
+                1),
             myGridItems(
                 "WIKI",
                 "https://assets.prod-blog.avira.com/wp-content/uploads/2018/04/gaming-pc-2018.jpg",
                 0xff0E1111,
                 0xff0E1111,
                 context,
-                0),
+                2),
             myGridItems(
                 "MyTeck",
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS99XEavhBfUvIXRdW1HpXAIcSwSDe83h9NGQ&usqp=CAU",
                 0xff353839,
                 0xff353839,
                 context,
-                0),
+                3),
+            myGridItems(
+                "Golden Pc",
+                "https://pngimg.com/uploads/computer_pc/computer_pc_PNG17486.png",
+                0xff353839,
+                0xff353839,
+                context,
+                4),
             myGridItems(
                 "tak tech",
                 "https://i2.wp.com/www.element-gaming.eu/wp-content/uploads/2020/06/image-3.png?fit=1280%2C622&ssl=1",
                 0xff0E1111,
                 0xff0E1111,
                 context,
-                0),
+                5),
           ],
         ));
   }
