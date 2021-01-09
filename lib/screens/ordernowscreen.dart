@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pcbuilder/models/fournisseur.dart';
-import 'package:pcbuilder/screens/loginscreen.dart';
-import 'package:pcbuilder/screens/sbsmapscreen.dart';
+import 'package:pcbuilder/screens/mapscreen.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
 class OrderNow extends StatefulWidget {
@@ -25,50 +23,56 @@ class _OrderNowState extends State<OrderNow> {
           children: <Widget>[
             myGridItems(
                 "Golden Pc",
-                "https://lh3.googleusercontent.com/proxy/2xMZcT3yXtbduQS5pvzhOTHJiUtOFVyozuu1l5ZSLMZ5WrsC-_0EZwPjrqIAUA5QyLIqouFhnva_fuI286Lj2vQhUWoVDNCsW9Zbhi7qlhO5YXnsRXmxJXMQjYK4",
+                "https://pngimg.com/uploads/computer_pc/computer_pc_PNG17486.png",
                 0xff353839,
                 0xff353839,
-                context),
+                context,
+                0),
             myGridItems(
                 "SBS Informatique",
                 "https://www.leparisien.fr/resizer/gbtv5s1tpUyS3EaMZVv8wmfsVHQ=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/3OFN5BKSSH443T2SHDEBDGOBLY.jpg",
                 0xff0E1111,
                 0xff0E1111,
-                context),
+                context,
+                0),
             myGridItems(
                 "MEGA PC",
                 "https://www.sauvesouris.com/wp-content/uploads/2019/07/eda64c0a10fb395884fddec13045439b-696x464.jpg",
                 0xff353839,
                 0xff353839,
-                context),
+                context,
+                0),
             myGridItems(
                 "WIKI",
                 "https://assets.prod-blog.avira.com/wp-content/uploads/2018/04/gaming-pc-2018.jpg",
                 0xff0E1111,
                 0xff0E1111,
-                context),
+                context,
+                0),
             myGridItems(
                 "MyTeck",
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS99XEavhBfUvIXRdW1HpXAIcSwSDe83h9NGQ&usqp=CAU",
                 0xff353839,
                 0xff353839,
-                context),
+                context,
+                0),
             myGridItems(
                 "tak tech",
                 "https://i2.wp.com/www.element-gaming.eu/wp-content/uploads/2020/06/image-3.png?fit=1280%2C622&ssl=1",
                 0xff0E1111,
                 0xff0E1111,
-                context),
+                context,
+                0),
           ],
         ));
   }
 }
 
 Widget myGridItems(String gridName, String gridimage, int color1, int color2,
-    BuildContext context) {
+    BuildContext context, int index) {
   return RaisedButton(
     onPressed: () {
-      moveToPage(context, SbsMapScreen(fournisseur: f1));
+      moveToPage(context, MapScreen(index));
       debugPrint("clicked it");
     },
     padding: EdgeInsets.symmetric(),
@@ -141,19 +145,3 @@ Widget myGridItems(String gridName, String gridimage, int color1, int color2,
     ),
   );
 }
-
-Fournisseur f1 = Fournisseur("SBS Informatique", "ville", [
-  Boutique(
-      lat: 34.056340,
-      long: -118.232050,
-      telephone: "+216 99 999 999",
-      adresse: "Hello world my name is Mohamed")
-]);
-Fournisseur f2 = Fournisseur("SBS Informatique", "ville", [
-  Boutique(
-      lat: 34.056340,
-      long: -118.232050,
-      telephone: "+216 99 999 999",
-      adresse: "Hello world my name is Mohamed")
-]);
-List<Fournisseur> fournisseurs = [f1, f2];

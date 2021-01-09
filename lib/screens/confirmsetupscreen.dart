@@ -6,7 +6,6 @@ import 'package:pcbuilder/models/equipment.dart';
 import 'package:pcbuilder/screens/ordernowscreen.dart';
 import 'package:pcbuilder/screens/pickcase.dart';
 import 'package:pcbuilder/screens/saveconfig.dart';
-import 'package:pcbuilder/screens/sbsmapscreen.dart';
 import 'package:pcbuilder/utils/currencies.dart';
 import 'package:pcbuilder/utils/utils.dart';
 
