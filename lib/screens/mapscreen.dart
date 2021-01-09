@@ -308,9 +308,9 @@ class _MapScreenState extends State<MapScreen> {
   static Fournisseur f4 = Fournisseur(
       "Mytek", [7, 8, 9, 10], 36.20678725799245, 10.185396652642895, 8.0);
   static Fournisseur f5 =
-      Fournisseur("Mytek", [], 36.20678725799245, 10.185396652642895, 8.0);
+      Fournisseur("Golden PC", [], 36.20678725799245, 10.185396652642895, 8.0);
   static Fournisseur f6 =
-      Fournisseur("Mytek", [], 36.20678725799245, 10.185396652642895, 8.0);
+      Fournisseur("tak tek", [], 36.20678725799245, 10.185396652642895, 8.0);
   List<Fournisseur> fournisseurs = [f1, f2, f3, f4, f5, f6];
 }
 
