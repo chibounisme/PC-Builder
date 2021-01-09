@@ -100,13 +100,16 @@ class _MapScreenState extends State<MapScreen> {
                                                   Icon(FontAwesomeIcons.phone),
                                               label: Text("Call"),
                                               onPressed: () {
-                                                launch("tel://21213123123");
+                                                launch(
+                                                    "tel://${boutique.telephone}");
                                               }),
                                           RaisedButton.icon(
                                               icon:
                                                   Icon(FontAwesomeIcons.globe),
                                               label: Text("Website"),
-                                              onPressed: () {}),
+                                              onPressed: () {
+                                                launch("${boutique.adresse}");
+                                              }),
                                           SizedBox(
                                             width: 10.0,
                                           ),
@@ -114,7 +117,9 @@ class _MapScreenState extends State<MapScreen> {
                                               icon: Icon(
                                                   FontAwesomeIcons.facebook),
                                               label: Text("Facebook"),
-                                              onPressed: () {})
+                                              onPressed: () {
+                                                launch("${boutique.facebook}");
+                                              })
                                         ],
                                       ),
                                     ),
@@ -308,7 +313,7 @@ class _MapScreenState extends State<MapScreen> {
   static Fournisseur f4 = Fournisseur(
       "Mytek", [7, 8, 9, 10], 36.20678725799245, 10.185396652642895, 8.0);
   static Fournisseur f5 =
-      Fournisseur("Golden PC", [], 36.20678725799245, 10.185396652642895, 8.0);
+      Fournisseur("Golden", [], 36.20678725799245, 10.185396652642895, 8.0);
   static Fournisseur f6 =
       Fournisseur("tak tek", [], 36.20678725799245, 10.185396652642895, 8.0);
   List<Fournisseur> fournisseurs = [f1, f2, f3, f4, f5, f6];
