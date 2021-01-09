@@ -28,8 +28,9 @@ class _MapScreenState extends State<MapScreen> {
         ),
         body: new FlutterMap(
           options: new MapOptions(
-            center: new LatLng(34.056340, -118.232050),
-            zoom: 13.0,
+            center: new LatLng(fournisseurs[widget.index].centerLat,
+                fournisseurs[widget.index].centerLong),
+            zoom: fournisseurs[widget.index].zoomba,
           ),
           layers: [
             new TileLayerOptions(
@@ -40,19 +41,6 @@ class _MapScreenState extends State<MapScreen> {
                       'pk.eyJ1IjoidGF6YmFraSIsImEiOiJja2pvZ3lsMnUwZGQzMnNsMTQ4Z2R6ZGxuIn0.g-mkDdKzUZRE8b0zEG0T4Q',
                   'id': 'mapbox.mapbox-streets-v8'
                 }),
-            new MarkerLayerOptions(markers: [
-              new Marker(
-                  width: 80.0,
-                  height: 90.0,
-                  point: new LatLng(34.056340, -118.232050),
-                  builder: (context) => Container(
-                        child: IconButton(
-                          icon: Icon(FontAwesomeIcons.mapMarkerAlt),
-                          iconSize: 45.0,
-                          onPressed: () {},
-                        ),
-                      ))
-            ]),
             new MarkerLayerOptions(
                 markers: fournisseurs[widget.index].boutiques.map((el) {
               print("el is $el");
@@ -192,19 +180,27 @@ class _MapScreenState extends State<MapScreen> {
       facebook: "https://www.facebook.com/7low");
   List<Boutique> boutiques = [b1, b2];
 
-  static Fournisseur f1 = Fournisseur("SBS Informatique", "ville", [0, 1]);
-  static Fournisseur f2 = Fournisseur("shishi", "ville", [1]);
+  static Fournisseur f1 = Fournisseur(
+      "SBS Informatique", "ville", [0, 1], 34.056340, -118.232050, 13.0);
+  static Fournisseur f2 =
+      Fournisseur("shishi", "ville", [1], 34.056340, -118.232050, 13.0);
   List<Fournisseur> fournisseurs = [f1, f2];
 }
 
 class Fournisseur {
   String name;
   String subtitle;
+  double centerLat;
+  double centerLong;
+  double zoomba;
   var boutiques = [];
 
-  Fournisseur(name, subtitle, boutiques) {
+  Fournisseur(name, subtitle, boutiques, centerLat, centerLong, zoomba) {
     this.name = name;
     this.subtitle = subtitle;
+    this.centerLat = centerLat;
+    this.centerLong = centerLong;
+    this.zoomba = zoomba;
     this.boutiques = boutiques;
   }
 
