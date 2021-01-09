@@ -84,8 +84,12 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                       Icons.delete,
                       color: Colors.white,
                     )),
-                onDismissed: (direction) {
+                onDismissed: (direction) async {
                   // delete configuration with id from firestore;
+                  await FirebaseFirestore.instance
+                      .collection('configurations')
+                      .doc(configurations[index]['id'])
+                      .delete();
                   setState(() {
                     configurations.removeAt(index);
                   });
@@ -120,12 +124,16 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             softWrap: true,
-                            style: TextStyle(fontSize: 11.0)),
+                            style:
+                                TextStyle(fontSize: 11.0, color: Colors.pink)),
                       )
                     ],
                   ),
                   trailing: RaisedButton(
-                    color: Colors.pink,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.black)),
+                    color: Colors.black,
                     onPressed: () {
                       moveToPage(context,
                           ConfigurationDetailsScreen(configurations[index]));
