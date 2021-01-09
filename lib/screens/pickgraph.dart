@@ -20,7 +20,7 @@ class _PickGraphState extends State<PickGraph> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pick a Graphic Card"),
+        title: Text("Pick a Graphics Card"),
         backgroundColor: Colors.pink,
         elevation: 20,
         actions: [

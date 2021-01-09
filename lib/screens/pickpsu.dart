@@ -1,9 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pcbuilder/models/equipment.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pcbuilder/screens/pickcase.dart';
+import 'package:pcbuilder/services/firestore.dart';
 import 'package:pcbuilder/utils/currencies.dart';
 import 'package:pcbuilder/utils/utils.dart';
 import 'package:pcbuilder/models/configuration.dart';
@@ -41,25 +41,18 @@ class ListPage extends StatefulWidget {
 }
 
 class _ListPageState extends State<ListPage> {
-  Future<List<Equipment>> getPosts() async {
-    var firestore = FirebaseFirestore.instance;
-    //print("hani hne");
-    QuerySnapshot qn = await firestore
-        .collection("equipments")
-        .where("type", isEqualTo: "psu")
-        .get();
-    print(qn.docs);
-    return qn.docs
-        .map((element) => Equipment(
-              id: element.id,
-              name: element.data()['name'],
-              description: element.data()['description'],
-              type: element.data()['type'],
-              imgUrl: element.data()['img_url'],
-              price: element.data()['price'].toDouble(),
-              brand: element.data()['brand'],
-            ))
-        .toList();
+  List<Equipment> _equipments = [];
+  List<Equipment> _displayedEquipments = [];
+
+  @override
+  initState() {
+    FireStoreService.getEquipmentsByType('psu').then((l) {
+      setState(() {
+        _equipments = l;
+        _displayedEquipments = _equipments;
+      });
+    });
+    super.initState();
   }
 
   navigateToDetail(Equipment equipment) {
@@ -69,50 +62,88 @@ class _ListPageState extends State<ListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: FutureBuilder(
-        future: getPosts(),
-        builder: (_, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: SpinKitWanderingCubes(
-                color: Colors.pink,
-                size: 50.0,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        TextEditingController().clear();
+      },
+      child: Material(
+          child: _equipments.length == 0
+              ? Center(
+                  child: SpinKitCubeGrid(
+                    color: Colors.pink,
+                    size: 50.0,
+                  ),
+                )
+              : ListView.builder(
+                  itemCount: _displayedEquipments.length + 1,
+                  itemBuilder: (_, index) {
+                    return index == 0 ? _searchBar() : _listItem(index - 1);
+                  })),
+    );
+  }
+
+  _searchBar() {
+    return Padding(
+        padding: EdgeInsets.all(8),
+        child: Column(
+          children: [
+            TextField(
+              cursorColor: Colors.pink,
+              decoration: InputDecoration(
+                hintText: 'Search...',
+                hintStyle: TextStyle(color: Colors.grey[500]),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.pink),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.pink),
+                ),
               ),
-            );
-          } else if (snapshot.connectionState == ConnectionState.done) {
-            return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (_, index) {
-                  return ListTile(
-                    title: Text(snapshot.data[index].name),
-                    subtitle: Text((snapshot.data[index].price *
-                                GetIt.instance<Currencies>()
-                                    .currentConversionRate)
-                            .toStringAsFixed(3) +
-                        ' ' +
-                        GetIt.instance<Currencies>().currentCurrency),
-                    trailing: Icon(Icons.arrow_forward_sharp,
-                        color: Colors.pink, size: 24.0),
-                    leading: Container(
-                      width: MediaQuery.of(context).size.width * 0.19,
-                      child: Row(
-                        children: <Widget>[
-                          CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(snapshot.data[index].imgUrl),
-                          ),
-                          SizedBox(width: 25),
-                        ],
-                      ),
-                    ),
-                    onTap: () => navigateToDetail(snapshot.data[index]),
-                  );
+              onChanged: (text) {
+                final searchString =
+                    text.replaceAll(RegExp('/\W/g'), '').toLowerCase();
+                setState(() {
+                  _displayedEquipments = _equipments.where((element) {
+                    return element.name.toLowerCase().contains(searchString) ||
+                        element.description
+                            .toLowerCase()
+                            .contains(searchString);
+                  }).toList();
                 });
-          } else
-            return Container();
-        },
+              },
+            ),
+            if (_displayedEquipments.length == 0) ...[
+              Center(
+                  child: Padding(
+                      padding: EdgeInsets.only(top: 16),
+                      child: Text('No results were found :(')))
+            ]
+          ],
+        ));
+  }
+
+  _listItem(index) {
+    return ListTile(
+      title: Text(_displayedEquipments[index].name),
+      subtitle: Text((_displayedEquipments[index].price *
+                  GetIt.instance<Currencies>().currentConversionRate)
+              .toStringAsFixed(3) +
+          ' ' +
+          GetIt.instance<Currencies>().currentCurrency),
+      trailing: Icon(Icons.arrow_forward_sharp, color: Colors.pink, size: 24.0),
+      leading: Container(
+        width: MediaQuery.of(context).size.width * 0.19,
+        child: Row(
+          children: <Widget>[
+            CircleAvatar(
+              backgroundImage: NetworkImage(_displayedEquipments[index].imgUrl),
+            ),
+            SizedBox(width: 25),
+          ],
+        ),
       ),
+      onTap: () => navigateToDetail(_displayedEquipments[index]),
     );
   }
 }

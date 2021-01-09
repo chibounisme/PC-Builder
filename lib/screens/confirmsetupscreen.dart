@@ -48,7 +48,7 @@ class _ConfirmSetupState extends State<ConfirmSetup> {
         hcase.price;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Final SetUp"),
+        title: Text("Final Setup"),
         backgroundColor: Colors.pink,
         elevation: 20,
       ),
