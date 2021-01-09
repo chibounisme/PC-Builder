@@ -3,13 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import "package:latlong/latlong.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pcbuilder/models/fournisseur.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SbsMapScreen extends StatefulWidget {
+  Fournisseur fournisseur;
+
+  SbsMapScreen({fournisseur}) {
+    print(fournisseur.toString());
+  }
+
   @override
   _SbsMapScreenState createState() => _SbsMapScreenState();
-  int ind;
-  SbsMapScreen({ind});
 }
 
 class _SbsMapScreenState extends State<SbsMapScreen> {
@@ -17,7 +22,7 @@ class _SbsMapScreenState extends State<SbsMapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("SBS Informatique Locations"),
+          title: Text(widget.fournisseur.name),
           backgroundColor: Colors.pink,
           elevation: 20,
         ),

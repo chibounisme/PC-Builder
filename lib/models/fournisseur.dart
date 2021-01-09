@@ -1,25 +1,22 @@
-class Fournisseurs {
-  static final fournisseurs = [
-    // 1er fournisseur, e.g. SBS Informatique
-    {
-      'title': 'SBS Informatique',
-      'subtitle': 'ville',
-      // liste des boutiques
-      'boutiques': [
-        {
-          'lat': 1.111,
-          'long': 1.111,
-          'telephone': '+216 99 999 999',
-          'addresse': 'Hello world my name is Mohamed'
-        },
-        {
-          'lat': 1.111,
-          'long': 1.111,
-          'telephone': '+216 99 999 999',
-          'addresse': 'Hello world my name is Mohamed'
-        }
-      ]
-    },
-    // 2ème fournisseur, etc
-  ];
+class Fournisseur {
+  String name;
+  String subtitle;
+  List<dynamic> boutiques;
+  Fournisseur(name, subtitle, boutiques) {
+    this.name = name;
+    this.subtitle = subtitle;
+    this.boutiques = boutiques;
+  }
+
+  String toString() => "$name - $subtitle";
+
+  getTitle() => name;
+}
+
+class Boutique {
+  double lat;
+  double long;
+  String telephone;
+  String adresse;
+  Boutique({lat, long, telephone, adresse});
 }

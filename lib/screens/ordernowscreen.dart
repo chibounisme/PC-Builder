@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pcbuilder/models/fournisseur.dart';
 import 'package:pcbuilder/screens/loginscreen.dart';
 import 'package:pcbuilder/screens/sbsmapscreen.dart';
 import 'package:pcbuilder/utils/utils.dart';
@@ -67,7 +68,7 @@ Widget myGridItems(String gridName, String gridimage, int color1, int color2,
     BuildContext context) {
   return RaisedButton(
     onPressed: () {
-      moveToPage(context, SbsMapScreen());
+      moveToPage(context, SbsMapScreen(fournisseur: f1));
       debugPrint("clicked it");
     },
     padding: EdgeInsets.symmetric(),
@@ -140,3 +141,19 @@ Widget myGridItems(String gridName, String gridimage, int color1, int color2,
     ),
   );
 }
+
+Fournisseur f1 = Fournisseur("SBS Informatique", "ville", [
+  Boutique(
+      lat: 34.056340,
+      long: -118.232050,
+      telephone: "+216 99 999 999",
+      adresse: "Hello world my name is Mohamed")
+]);
+Fournisseur f2 = Fournisseur("SBS Informatique", "ville", [
+  Boutique(
+      lat: 34.056340,
+      long: -118.232050,
+      telephone: "+216 99 999 999",
+      adresse: "Hello world my name is Mohamed")
+]);
+List<Fournisseur> fournisseurs = [f1, f2];
