@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:pcbuilder/screens/configurationsscreen.dart';
 import 'package:pcbuilder/screens/updateProfile.dart';
 import 'package:pcbuilder/utils/utils.dart';
 import 'package:provider/provider.dart';
@@ -105,9 +106,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   borderRadius: BorderRadius.circular(18.0),
                                   side: BorderSide(color: Colors.red)),
                               color: Colors.pink,
-                              onPressed: () {},
+                              onPressed: () {
+                                moveToPage(context, ConfigurationScreen());
+                              },
                               child: Text(
-                                'check your configurations  ',
+                                'Check your configurations',
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),
@@ -125,7 +128,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 moveToPage(context, UpdateProfile());
                               },
                               child: Text(
-                                'update your profile page',
+                                'Update your profile page',
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),
