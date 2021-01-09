@@ -52,7 +52,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
     return Material(
       child: Container(
         height: 50.0,
-        decoration: new BoxDecoration(color: Colors.grey[900]),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/profile.png"),
+              fit: BoxFit.fill,
+            )),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: StreamBuilder(
