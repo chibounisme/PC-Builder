@@ -26,10 +26,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Material(
       child: Container(
         height: 50.0,
-        decoration: BoxDecoration(image: DecorationImage(
-          image: AssetImage("images/PROFILE.png"),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          image: AssetImage("assets/images/profile.png"),
           fit: BoxFit.fill,
-
         )),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
