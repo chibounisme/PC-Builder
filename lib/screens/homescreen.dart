@@ -120,7 +120,7 @@ class HomeScreenGrid extends StatelessWidget {
                   if (el.target != null) moveToPage(context, el.target);
                 },
                 child: Container(
-                  padding: EdgeInsets.all(15),
+                  padding: EdgeInsets.all(3),
                   decoration: BoxDecoration(
                       color: Colors.grey[600],
                       borderRadius: BorderRadius.circular(10)),
@@ -129,7 +129,7 @@ class HomeScreenGrid extends StatelessWidget {
                     children: [
                       Icon(
                         el.icon,
-                        size: 60,
+                        size: 55,
                         color: Colors.white,
                       ),
                       SizedBox(height: 14),
