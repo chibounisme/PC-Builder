@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pcbuilder/models/configuration.dart';
-import 'package:flutter/services.dart' ;
+import 'package:flutter/services.dart';
 
 import 'package:pcbuilder/screens/welcomescreen.dart';
 import 'package:pcbuilder/services/auth.dart';
@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     handleStartUpLogic();
     SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-      ]);
+      DeviceOrientation.portraitUp,
+    ]);
     return StreamProvider.value(
         value: AuthService().user,
         child: MaterialApp(
